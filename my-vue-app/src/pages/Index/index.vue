@@ -1,140 +1,49 @@
-<template>
-  <div class="home layout">
-    <div class="top">
-      <div class="l-logo">
-        竞技场
-      </div>
-    </div>
-    <div class="main">
-      <label for="">这是一个 select:</label>
-      <majorSelect
-        :options="options"
-        v-model="form"
-        monitorVarible="hobby"
-        :realData="form.hobby"
-      ></majorSelect>
-    </div>
-    <div>
-      {{ form }}
-    </div>
-    <div>
-      232333
-    </div>
-  </div>
-</template>
+<script lang="ts">
+import { defineComponent, onMounted, reactive, ref } from 'vue'
 
-<script>
-import {useRouter} from 'vue-router'
-import majorSelect from '@/pages/CreateComponent/majorSelect.vue'
-import {
-  defineComponent,
-  reactive,
-  toRefs,
-  computed,
-  h,
-  ref,
-  customRef,
-  onMounted,
-  watchEffect
-} from 'vue'
+export default defineComponent({
+  setup() {
+    var form: number[] = reactive([23])
+    function main(): void {
+      form.push(3333)
+      console.log(form)
+    }
 
-var log = console.log.bind(console)
+    function onBtnPushClick(num: number): void {
+      form.push(num)
+    }
 
-export default {
-  name: 'index.vue',
-  components: {
-    majorSelect
-  },
-  data() {
+
+    onMounted(main)
+
     return {
-      form: {
-        hobby: ''
-      },
-      options: [
-        {dictCode: '12', dictName: '货架 12 $'},
-        {dictCode: '32', dictName: '货架 32 $'},
-        {dictCode: '23', dictName: '货架 23 $'},
-        {dictCode: '22', dictName: '货架 22 $'}
-      ]
+      form,
+
+      onBtnPushClick
     }
   },
-  created() {
-    var log = console.log.bind(console)
-    log(useRouter(), 1212)
-    log(121)
-  }
-}
+})
 </script>
 
+<template>
+  <div class="hello">{{ form }}</div>
+  <button 
+    class="base-btn"
+    @click="onBtnPushClick(Math.random())"
+  >
+    按钮
+  </button>
+</template>
+
 <style scoped>
-* {
-  /*background-color: rgba(0, 0, 0, .3);*/
+.hello {
+  color: blue;
 }
 
-.l-logo {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding-left: 10px;
-  font-size: 40px;
-  font-weight: bold;
-}
-
-.home {
-  height: 100%;
-}
-
-.top {
-  position: fixed;
-  width: 100%;
-  height: 80px;
-  border-bottom: 1px solid #eee;
-  box-shadow: 1px 3px 20px 6px #eee;
-}
-
-.slide {
-  width: 15%;
-  height: 100%;
-  border: 1px solid #eee;
-  box-shadow: 0 0 13px 0 #eee;
-  overflow: scroll;
-}
-
-.content {
-  width: 80%;
-  padding: 30px;
-  background-color: #fff;
-  overflow: scroll;
-}
-
-.main {
-  display: flex;
-  padding-top: 90px;
-}
-
-.slide {
-  padding-top: 30px;
-  border-radius: 3px;
-  box-shadow: 0 0 3px 0 #ccc;
-}
-
-a {
-  text-decoration: none;
-  color: unset;
-}
-
-.slide-item {
-  text-align: center;
-}
-
-.slide-item a {
-  display: block;
-  margin-bottom: 20px;
-  color: #999;
-  transition: all 1s;
-}
-
-.slide-item a:hover {
-  color: #353535;
+.base-btn {
+  padding: 10px;
+  border: none;
+  color: rgba(255, 255, 255, 0.475);
+  background-color: purple;
 }
 </style>
