@@ -14,6 +14,12 @@
         :realData="form.hobby"
       ></majorSelect>
     </div>
+    <div>
+      {{ form }}
+    </div>
+    <div>
+      232333
+    </div>
   </div>
 </template>
 
@@ -104,7 +110,6 @@ export default {
 .main {
   display: flex;
   padding-top: 90px;
-  height: 100%;
 }
 
 .slide {
