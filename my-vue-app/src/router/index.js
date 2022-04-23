@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-
+import udpn from './udpn'
 var routes = [
   {
     path: '/',
@@ -18,7 +18,8 @@ var routes = [
         component: () => import('p/Index/Left.vue')
       }
     ]
-  }
+  },
+  udpn
 ]
 
 export const router = createRouter({
