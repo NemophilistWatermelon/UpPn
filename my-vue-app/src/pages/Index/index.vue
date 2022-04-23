@@ -7,12 +7,16 @@ export default defineComponent({
     function main(): void {
       form.push(3333)
       console.log(form)
+      a()
     }
 
     function onBtnPushClick(num: number): void {
       form.push(num)
     }
 
+    function a() {
+      console.log('a run')
+    }
 
     onMounted(main)
 
