@@ -35,6 +35,7 @@ export default defineComponent({
       <template v-for="it in JuZhen">
         <template v-for="item in it">
           <UI normalText="ddddd" v-if="item === 1"></UI>  
+          <!-- 定义不显示的布局 -->
           <UI :un="false" v-if="item === 0">null</UI>
         </template>
       </template>
@@ -48,7 +49,7 @@ export default defineComponent({
   height: 614px;
   margin: auto;
   background-color: #e0e0e0;
-  .null {
+   .null {
     display: inline-block;
     width: 100px;
     height: 100px;

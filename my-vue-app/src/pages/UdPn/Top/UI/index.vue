@@ -7,16 +7,16 @@
       default: true
     }
   })
-  let bool = ref(false)
+  let bool = ref()
   let BindText = ref('')
 
 
   function onInputChange(e) {
     if (e !== prop.normalText) {
-      bool.value = true
+      bool.value = 2
       return
     }
-    return bool.value = false
+    return bool.value = 1
   }
 
 </script>
@@ -26,8 +26,8 @@
     <template v-if="prop.un">
       <section>文字</section>
       <el-input @input="onInputChange" v-model="BindText"></el-input>
-      <span v-if="bool">输错了</span>
-      <span v-else>Yep! you win</span>
+      <span v-if="bool === 2">输错了</span>
+      <span v-else-if="bool === 1">Yep! you win</span>
     </template>
     
   </div>
@@ -42,6 +42,6 @@
   text-align: center;
   padding: 10px;
   box-sizing: border-box;
-  outline: 1px solid #4e4e4e;
+  outline: 1px solid #a2a2a259;
 }
 </style>
