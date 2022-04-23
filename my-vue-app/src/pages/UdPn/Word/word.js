@@ -34,6 +34,11 @@ const wordsMap = {
     秦: 'qn',
     孟: 'mg',
     孙: 'sp',
+    李: 'li',
+    周: 'vb',
+    武: 'wu',
+    郑: 'vg',
+    王: 'wh',
   },
   组词: {
     赵钱: 'vkqm',
