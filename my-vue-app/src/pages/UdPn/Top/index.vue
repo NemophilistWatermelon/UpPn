@@ -18,7 +18,7 @@ export default defineComponent({
 <template>
   <div class="top-container">
     <div class="item">
-      <UI></UI>
+      <UI normalText="ddddd"></UI>
     </div>
   </div>
 </template>
