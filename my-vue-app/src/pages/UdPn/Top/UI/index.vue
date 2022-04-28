@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-  import {ref, defineProps, withDefaults} from 'vue'
+
   const prop = defineProps({
     normalText: String,
     un: {

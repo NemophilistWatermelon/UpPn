@@ -13,7 +13,10 @@
   html,
   body,
   #app {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
     height: 100%;
-    overflow: hidden;
+    overflow: auto;
   }
 </style>

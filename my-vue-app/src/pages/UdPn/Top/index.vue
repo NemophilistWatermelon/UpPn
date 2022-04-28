@@ -12,12 +12,7 @@ export default defineComponent({
 
   setup() {
     let JuZhen = reactive([
-      [1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1]
+      [1, 1, 1, 1],
     ])
 
     console.log(JuZhen)
@@ -46,7 +41,6 @@ export default defineComponent({
 <style lang='scss' scoped>
 .top-container {
   width: 600px;
-  height: 614px;
   margin: auto;
   background-color: #e0e0e0;
    .null {

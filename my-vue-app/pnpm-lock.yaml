@@ -3,6 +3,9 @@ lockfileVersion: 5.3
 specifiers:
   '@vitejs/plugin-vue': ^2.0.0
   axios: ^0.24.0
+  bignumber: ^1.1.0
+  bignumber.js: ^9.0.2
+  decimal.js: ^10.3.1
   element-plus: ^2.0.6
   eslint: ^8.6.0
   eslint-config-prettier: ^8.3.0
@@ -21,6 +24,9 @@ specifiers:
 
 dependencies:
   axios: 0.24.0
+  bignumber: 1.1.0
+  bignumber.js: 9.0.2
+  decimal.js: 10.3.1
   element-plus: 2.0.6_vue@3.2.26
   eslint: 8.6.0
   eslint-config-prettier: 8.3.0_eslint@8.6.0
@@ -325,6 +331,15 @@ packages:
   /balanced-match/1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
+  /bignumber.js/9.0.2:
+    resolution: {integrity: sha512-GAcQvbpsM0pUb0zw1EI0KhQEZ+lRwR5fYaAp3vPOYuP7aDvGy6cVN6XHLauvF8SOga2y0dcLcjt3iQDTSEliyw==}
+    dev: false
+
+  /bignumber/1.1.0:
+    resolution: {integrity: sha1-5qsKdD2l8+oBjlwXWX0SH3howVk=}
+    engines: {node: '>=0.4.0'}
+    dev: false
+
   /binary-extensions/2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
@@ -417,6 +432,10 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
+
+  /decimal.js/10.3.1:
+    resolution: {integrity: sha512-V0pfhfr8suzyPGOx3nmq4aHqabehUZn6Ch9kyFpV79TGDTWFmHqUqXdabR7QHqxzrYolF4+tVmJhUG4OURg5dQ==}
+    dev: false
 
   /deep-is/0.1.4:
     resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}

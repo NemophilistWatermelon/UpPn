@@ -29,32 +29,8 @@ const wordsMap = {
       z:  'z | ei'
     }
   },
-  // 简单模式
-  EASYMODE: {
-    秦: 'qn',
-    孟: 'mg',
-    孙: 'sp',
-    李: 'li',
-    周: 'vb',
-    武: 'wu',
-    郑: 'vg',
-    王: 'wh',
-  },
-  组词: {
-    赵钱: 'vkqm',
-    熊猫: 'xsmk',
-    盒子: 'hezi',
-    海绵: 'hlmm',
-    理想: 'lixd',
-    爬虫: 'pais',
-    小猫: 'xcmk',
-  },
-  单字母练习: {
-    额: 'ee',
-    啊: 'aa'
-  }
 }
 
-export { 
+export default { 
   wordsMap
 }

@@ -1,20 +1,12 @@
-<template>
-  <div>
-    <Top />
-    <Botom />
-  </div>
-</template>
-
-
 <script>
 import { defineComponent } from 'vue'
-import Top from './Top/index.vue'
+import HardMode from './Top/HardMode/index.vue'
 import Botom from './Botom/index.vue'
 
 export default defineComponent({
   name: 'udpn',
   components: {
-    Top,
+    HardMode,
     Botom
   },
   setup() {
@@ -22,3 +14,12 @@ export default defineComponent({
   }
 })
 </script>
+
+<template>
+  <div style="text-align: center;">
+    <HardMode />
+    <Botom />
+  </div>
+</template>
+
+
