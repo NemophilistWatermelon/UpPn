@@ -1,25 +1,24 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import udpn from './udpn'
+
+const Layout = () => import('@/layout/index.vue')
+
 var routes = [
   {
     path: '/',
-    redirect: '/index'
-  },
-  {
-    path: '/index',
-    name: '首页',
-    meta: {
-      title: '首页'
-    },
-    component: () => import('p/Index/index.vue'),
+    component: Layout,
     children: [
       {
-        path: 'left',
-        component: () => import('p/Index/Left.vue')
-      }
+        path: '/index',
+        name: '首页',
+        meta: {
+          title: '首页'
+        },
+      },
+      udpn
     ]
   },
-  udpn
+  
 ]
 
 export const router = createRouter({
