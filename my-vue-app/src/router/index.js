@@ -1,5 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+// 双拼路由
 import udpn from './udpn'
+// Blog 路由
+import Blog from './Blog'
+// Project 路由
+import Project from './Project' 
 
 const Layout = () => import('@/layout/index.vue')
 
@@ -15,7 +20,9 @@ var routes = [
           title: '首页'
         },
       },
-      udpn
+      udpn,
+      Blog,
+      Project,
     ]
   },
   

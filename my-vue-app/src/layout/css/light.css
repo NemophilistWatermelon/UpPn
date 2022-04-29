@@ -1,5 +1,7 @@
 [light]:root{
   --nav-bg-color: #fff;
   --bg-opcity: 1;
-  --bg-color: rgba(255,255,255, var(--bg-opcity))
+  --bg-color: rgba(255,255,255, var(--bg-opcity));
+
+
 }

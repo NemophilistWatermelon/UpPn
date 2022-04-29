@@ -13,7 +13,7 @@ export default defineComponent({
     const preferredColor = usePreferredColorScheme()
     const currentTheme = ref(true)
     /* 设置根元素的换肤属性 */
-    function addBodyClass(mode, removeClass) {
+    function addBodyAttr(mode, removeClass) {
       document.documentElement.setAttribute(mode, mode)
       document.documentElement.removeAttribute(removeClass)
     }
@@ -41,18 +41,18 @@ export default defineComponent({
       const modeMap = {
         light: _ => {
           currentTheme.value = 'light'
-          addBodyClass('light', 'night')
+          addBodyAttr('light', 'night')
         },
         dark: _ => {
           currentTheme.value = 'dark'
-          addBodyClass('night', 'light')
+          addBodyAttr('night', 'light')
         },
         'no-preference': _ => {
           currentTheme.value = 'light'
-          addBodyClass('light', 'night')
+          addBodyAttr('light', 'night')
         }
       }
-      return mode ? modeMap[mode]() :  modeMap[currentMode.value]()
+      return modeMap[mode]()
     }
 
 
