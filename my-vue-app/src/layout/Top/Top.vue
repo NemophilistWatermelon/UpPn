@@ -32,14 +32,14 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 3px 0 #eee;
   box-sizing: border-box;
-  background-color: var(--nav-bg-color);
+  background-color: var(--bg-color);
   .l {
     padding-left: 55px;
 
     .Logo {
       font-size: 36px;
+      color: var(--half-gray-128);
     }
   }
   .r {

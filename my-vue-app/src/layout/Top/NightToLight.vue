@@ -1,6 +1,7 @@
 <script>
 import Light from './Light.vue'
 import Night from './Night.vue'
+import { usePreferredColorScheme } from '@vueuse/core'
 
 export default defineComponent({
   name: 'SunCutNight',
@@ -9,27 +10,62 @@ export default defineComponent({
     Night,
   },
   setup() {
+    const preferredColor = usePreferredColorScheme()
+    const currentTheme = ref(true)
+    /* 设置根元素的换肤属性 */
     function addBodyClass(mode, removeClass) {
       document.documentElement.setAttribute(mode, mode)
       document.documentElement.removeAttribute(removeClass)
     }
-    addBodyClass('light', 'night')
 
-    let currentMode = ref('light')
-    console.log(2323)
-    function changeMode() {
-      if (currentMode.value === 'light') {
-        currentMode.value = 'night'
-        addBodyClass('night', 'light')
-      } else {
-        currentMode.value = 'light'
-        addBodyClass('light', 'night')
-      }
+
+    function onThemeCut() {
+      nextTick(_ => {
+          setTimeout(() => {
+            changeMode(preferredColor.value) 
+            currentTheme.value = preferredColor.value            
+          }, 100);
+      })
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+        console.log('运行')
+        nextTick(_ => {
+          setTimeout(() => {
+            changeMode(preferredColor.value)            
+          }, 100);
+        })
+      })
     }
 
+    /* 点击图标换肤 */
+    function changeMode(mode) {
+      const modeMap = {
+        light: _ => {
+          currentTheme.value = 'light'
+          addBodyClass('light', 'night')
+        },
+        dark: _ => {
+          currentTheme.value = 'dark'
+          addBodyClass('night', 'light')
+        },
+        'no-preference': _ => {
+          currentTheme.value = 'light'
+          addBodyClass('light', 'night')
+        }
+      }
+      return mode ? modeMap[mode]() :  modeMap[currentMode.value]()
+    }
+
+
+    function __main() {
+      onThemeCut()
+    }
+
+    __main()
+
     return {
-      currentMode,
+      preferredColor,
       changeMode,
+      currentTheme,
     }
   }
 })
@@ -38,21 +74,24 @@ export default defineComponent({
 <template>
   <div class="s-c-n">
     <Light
-      class="icon-size"
-     @click="changeMode"
-      v-if="currentMode === 'light'"
+      class="icon-size half-gray-128"
+     @click="changeMode('dark')"
+      v-if="currentTheme === 'light'"
     />
     
     <Night
-      class="icon-size"
-     @click="changeMode" 
-     v-if="currentMode === 'night'" 
+      class="icon-size half-gray-128"
+     @click="changeMode('light')" 
+     v-if="currentTheme === 'dark'" 
     />
   </div>
 </template>
 
 <style scoped lang="scss">
 .icon-size {
-  font-size: 24px;
+  font-size: var(--cut-theme-font-icon-size);
+  .half-gray-128 {
+    color: var(--half-gray-128);
+  }
 }
 </style>

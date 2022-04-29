@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@vitejs/plugin-vue': ^2.0.0
+  '@vueuse/core': ^8.3.1
   axios: ^0.24.0
   bignumber: ^1.1.0
   bignumber.js: ^9.0.2
@@ -23,6 +24,7 @@ specifiers:
   vuex: ^4.0.2
 
 dependencies:
+  '@vueuse/core': 8.3.1_vue@3.2.26
   axios: 0.24.0
   bignumber: 1.1.0
   bignumber.js: 9.0.2
@@ -42,7 +44,7 @@ dependencies:
 
 devDependencies:
   '@vitejs/plugin-vue': 2.0.1_vite@2.7.10+vue@3.2.26
-  unplugin-auto-import: 0.6.4_vite@2.7.10
+  unplugin-auto-import: 0.6.4_@vueuse+core@8.3.1+vite@2.7.10
   unplugin-vue-components: 0.18.0_vite@2.7.10+vue@3.2.26
   vite: 2.7.10_sass@1.50.1
 
@@ -250,8 +252,44 @@ packages:
       vue-demi: 0.12.1_vue@3.2.26
     dev: false
 
+  /@vueuse/core/8.3.1_vue@3.2.26:
+    resolution: {integrity: sha512-WiXUgVyPG9elGx3G8UV8g+zqbEJ2hYacrPICogAxDdW6hnxxcUFdF7FtvDroJ/DxWmo2pg8XNNz07ybfnZyJbw==}
+    peerDependencies:
+      '@vue/composition-api': ^1.1.0
+      vue: ^2.6.0 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      '@vueuse/metadata': 8.3.1
+      '@vueuse/shared': 8.3.1_vue@3.2.26
+      vue: 3.2.26
+      vue-demi: 0.12.1_vue@3.2.26
+    dev: false
+
+  /@vueuse/metadata/8.3.1:
+    resolution: {integrity: sha512-1aZaFL44HzXXkfN6Q7KMDOXBFKTHDClHlOJBxtN8rTBXIIScoGOrJCpxWiQ4kuVg95MzG/pHrd3P4wd8poL9XQ==}
+    dev: false
+
   /@vueuse/shared/7.7.1_vue@3.2.26:
     resolution: {integrity: sha512-rN2qd22AUl7VdBxihagWyhUNHCyVk9IpvBTTfHoLH9G7rGE552X1f+zeCfehuno0zXif13jPw+icW/wn2a0rnQ==}
+    peerDependencies:
+      '@vue/composition-api': ^1.1.0
+      vue: ^2.6.0 || ^3.2.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+      vue:
+        optional: true
+    dependencies:
+      vue: 3.2.26
+      vue-demi: 0.12.1_vue@3.2.26
+    dev: false
+
+  /@vueuse/shared/8.3.1_vue@3.2.26:
+    resolution: {integrity: sha512-7HKLCcxp4dtONq6QSSoavblo9riYgqzw7jhqiC0/VUYMXKzqj1G/GznOzTmY8Wi8uKKT197JqjKQ1DKt2j/0+A==}
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
@@ -1397,7 +1435,7 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /unplugin-auto-import/0.6.4_vite@2.7.10:
+  /unplugin-auto-import/0.6.4_@vueuse+core@8.3.1+vite@2.7.10:
     resolution: {integrity: sha512-gkjVKnugRCIh1JtwZhn8bdvdW8RW17WoCEJgJXJ9sGMsKrgP9xbaNMLULrmtrfxyGOabm42XXWoaR12EzdcVNA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -1408,6 +1446,7 @@ packages:
     dependencies:
       '@antfu/utils': 0.5.0
       '@rollup/pluginutils': 4.2.0
+      '@vueuse/core': 8.3.1_vue@3.2.26
       local-pkg: 0.4.1
       magic-string: 0.26.1
       resolve: 1.22.0

@@ -1,2 +1,7 @@
 @import url('./light.css');
 @import url('./night.css');
+
+:root {
+  --half-gray-128: rgb(128, 128, 128);
+  --cut-theme-font-icon-size: 18px; 
+}

@@ -18,5 +18,6 @@
     align-items: center;
     height: 100%;
     overflow: auto;
+    background-color: var(--bg-color);
   }
 </style>

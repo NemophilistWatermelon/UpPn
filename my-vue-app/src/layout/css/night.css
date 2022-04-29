@@ -1,3 +1,6 @@
 [night]:root{
-  --nav-bg-color: #020404de;
+  --un-bg-opacity: 1;
+  --nav-bg-color: rgba(34,34,34,var(--un-bg-opacity));
+  --bg-opcity: .75;
+  --bg-color: rgba(8,8, 8, var(--bg-opcity))
 }
