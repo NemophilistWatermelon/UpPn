@@ -13,6 +13,7 @@ specifiers:
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-vue: ^8.2.0
   i: ^0.3.7
+  nprogress: ^0.2.0
   prettier: ^2.5.1
   sass: ^1.50.1
   sass-loader: ^12.6.0
@@ -39,6 +40,7 @@ dependencies:
   eslint-plugin-prettier: 4.0.0_1c588f61426b1faf18812943f1678311
   eslint-plugin-vue: 8.2.0_eslint@8.6.0
   i: 0.3.7
+  nprogress: 0.2.0
   prettier: 2.5.1
   sass: 1.50.1
   sass-loader: 12.6.0_sass@1.50.1
@@ -1366,6 +1368,10 @@ packages:
 
   /normalize-wheel-es/1.1.1:
     resolution: {integrity: sha512-157VNH4CngrcsvF8xOVOe22cwniIR3nxSltdctvQeHZj8JttEeOXffK28jucWfWBXs0QNetAumjc1GiInnwX4w==}
+    dev: false
+
+  /nprogress/0.2.0:
+    resolution: {integrity: sha1-y480xTIT2JVyP8urkH6UIq28r7E=}
     dev: false
 
   /once/1.4.0:

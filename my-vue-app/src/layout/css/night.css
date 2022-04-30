@@ -4,4 +4,6 @@
   --bg-opcity: .75;
   --bg-color: rgba(8,8, 8, var(--bg-opcity));
 
+  /* 进度条颜色 */
+  --ngprogress-bar-color: #fff;
 }

@@ -8,6 +8,9 @@
   // 导航文字颜色
   --nav-text-color: var(--half-gray-128);
   --m-full: 600px;
+
+   /* 进度条高度 */
+  --ngprogress-bar-height: 1px;
 }
 
 
@@ -22,5 +25,10 @@
 .max-full {
   width: var(--m-full);
   margin: 0 auto;
+}
+
+
+a {
+  text-decoration: none;
 }
 

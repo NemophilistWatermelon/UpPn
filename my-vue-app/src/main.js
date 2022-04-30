@@ -9,6 +9,8 @@ import Router from './router/index'
 /*vuex*/
 import Store from './store/index'
 import '@/layout/css/theme.scss'
+
+
 /* 挂接 */
 const app = createApp(App)
 

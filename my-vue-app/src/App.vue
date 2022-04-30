@@ -20,4 +20,8 @@
     overflow: auto;
     background-color: var(--bg-color);
   }
+#nprogress .bar {
+  height: var(--ngprogress-bar-height) !important;
+  background: var(--ngprogress-bar-color) !important;
+}
 </style>
