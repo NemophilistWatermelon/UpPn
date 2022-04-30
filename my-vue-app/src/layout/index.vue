@@ -2,13 +2,15 @@
 import Top from './Top/Top.vue'
 import Nav from './Nav/index.vue'
 import Bottom from './Bottom/index.vue'
+import unoDirectionBall from './Background/unoDirectionBall.vue'
 export default defineComponent({
   name: 'TopHead',
 
   components: {
     Top,
     Nav,
-    Bottom
+    Bottom,
+    unoDirectionBall
   }
 })
 </script>
@@ -19,5 +21,6 @@ export default defineComponent({
     <Nav />
     <router-view></router-view>
     <Bottom />
+    <unoDirectionBall />
   </div>
 </template>

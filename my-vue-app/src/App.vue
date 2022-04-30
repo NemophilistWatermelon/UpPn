@@ -13,9 +13,12 @@
   html,
   body,
   #app {
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
     height: 100%;
     overflow: auto;
     background-color: var(--bg-color);
