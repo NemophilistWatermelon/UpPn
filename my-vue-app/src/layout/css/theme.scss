@@ -10,9 +10,17 @@
   --m-full: 600px;
 }
 
+
+
 @media screen and (width: 765px) {
   :root {
     --m-full: 100%;
   }
 
 }
+
+.max-full {
+  width: var(--m-full);
+  margin: 0 auto;
+}
+

@@ -23,6 +23,10 @@ var routes = [
       udpn,
       Blog,
       Project,
+      {
+        path: '/blog/:md',
+        component: () => import('@/pages/Blog/template.vue'),
+      }
     ]
   },
   

@@ -22,8 +22,21 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="template-container" v-html="str">
+  <div class="template-container max-full" v-html="str">
 
   </div>
  
 </template>
+
+
+
+<style lang="scss" scoped>
+  .template-container {
+    background-color: #c7c7c7;
+    padding: 15px 10px;
+    border-radius: 4px;
+
+    ::v-deep h1 {
+    }
+  }
+</style>

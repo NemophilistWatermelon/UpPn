@@ -1,12 +1,14 @@
 <script>
 import Top from './Top/Top.vue'
 import Nav from './Nav/index.vue'
+import Bottom from './Bottom/index.vue'
 export default defineComponent({
   name: 'TopHead',
 
   components: {
     Top,
-    Nav
+    Nav,
+    Bottom
   }
 })
 </script>
@@ -16,5 +18,6 @@ export default defineComponent({
     <Top />
     <Nav />
     <router-view></router-view>
+    <Bottom />
   </div>
 </template>
