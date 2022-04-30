@@ -9,7 +9,7 @@ import { useRouter } from 'vue-router'
 </script>
 
 <template>
-  <div class="cd-container max-full">
+  <div class="cd-container max-full" v-if="router.currentRoute.value.fullPath !== '/'">
     <span @click="onExit">
       cd ../
     </span>
@@ -26,7 +26,7 @@ import { useRouter } from 'vue-router'
     font-weight: 700;
     letter-spacing: 3px;
     color: var(--half-gray-128);
-    font-family: 'Courier New', Courier, monospace;
+    font-family: var(--sytem-font);
     border-bottom: 1px solid transparent;
     transition: .3s all ease-in;
 
