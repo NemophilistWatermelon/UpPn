@@ -1,7 +1,9 @@
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
-
+import Markdown from 'vite-plugin-md'
+const mdPlugin = require('vite-plugin-markdown')
+console.log(mdPlugin)
 import path from 'path'
 export default defineConfig({
   plugins: [
@@ -9,6 +11,10 @@ export default defineConfig({
     AutoImport({ /* options */
       imports: ["vue", "vue-router"]
     }),
+    // Markdown(),
+    mdPlugin.plugin({
+      mode: ['html']
+    })
   ],
   resolve: {
     alias: {

@@ -7,11 +7,11 @@ export default defineComponent({
       navData: [
         {
           name: 'Blog',
-          path: 'Blog'
+          path: '/Blog'
         },
         {
           name: 'Project',
-          path: 'project'
+          path: '/project'
         }
       ]
     })

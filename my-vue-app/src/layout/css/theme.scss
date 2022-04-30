@@ -7,5 +7,12 @@
 
   // 导航文字颜色
   --nav-text-color: var(--half-gray-128);
+  --m-full: 600px;
+}
+
+@media screen and (width: 765px) {
+  :root {
+    --m-full: 100%;
+  }
 
 }

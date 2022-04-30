@@ -9,9 +9,12 @@ export default defineComponent({
     Light,
     Night,
   },
+
+
   setup() {
     const preferredColor = usePreferredColorScheme()
     const currentTheme = ref(true)
+
     /* 设置根元素的换肤属性 */
     function addBodyAttr(mode, removeClass) {
       document.documentElement.setAttribute(mode, mode)
