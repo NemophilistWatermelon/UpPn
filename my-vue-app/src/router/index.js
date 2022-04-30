@@ -15,13 +15,15 @@ var routes = [
   {
     path: '/',
     component: Layout,
+    redirect: '/index',
     children: [
       {
         path: '/index',
-        name: '首页',
+        name: 'index',
         meta: {
           title: '首页'
         },
+        component: () => import('@/pages/Intro/index.vue')
       },
       udpn,
       Blog,

@@ -9,7 +9,9 @@ import { useRouter } from 'vue-router'
 </script>
 
 <template>
-  <div class="cd-container max-full" v-if="router.currentRoute.value.fullPath !== '/'">
+  <div
+   class="cd-container max-full" 
+    v-if="!(['/', '/index'].includes(router.currentRoute.value.fullPath))">
     <span @click="onExit">
       cd ../
     </span>
