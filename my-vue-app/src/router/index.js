@@ -27,7 +27,7 @@ var routes = [
       Blog,
       Project,
       {
-        path: '/blog/:md',
+        path: '/posts/:md',
         component: () => import('@/pages/Blog/template.vue'),
       }
     ]

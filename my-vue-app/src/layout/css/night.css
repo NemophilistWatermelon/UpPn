@@ -6,4 +6,7 @@
 
   /* 进度条颜色 */
   --ngprogress-bar-color: #fff;
+
+  /* md h1 颜色 */
+  --md-h1-color: #fff;
 }

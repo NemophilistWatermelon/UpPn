@@ -7,15 +7,33 @@
     components: {
       Clock
     },
+
+    setup() {
+      const mdRouter = reactive({
+        BlogRoute: [
+          {
+            path: 'bar',
+            name: 'self',
+            text: '惊呆! ',
+            time: 'Feb 19',
+            readTime: '1min'
+          }
+        ]
+      })
+
+      return {
+        mdRouter
+      }
+    }
   })
 </script>
 
 <template>
   <div class="max-full">
-    <div class="post-item" v-for="item in 10">
-      <RouterLink to="/Blog">惊呆!竟然还可以这样写</RouterLink>
+    <div class="post-item" v-for="item in mdRouter.BlogRoute">
+      <RouterLink :to="'/posts/' + item.path ">{{ item.text}}</RouterLink>
       <div class="other"> 
-        <span>Feb 19 · <span class="readTime">1min</span></span>
+        <span>{{ item.time }} · <span class="readTime">{{ item.readTime }}</span></span>
       </div>
     </div>
   </div>
@@ -24,6 +42,8 @@
 <style lang="scss" scoped>
 .post-item {
   padding: 10px;
+  margin-bottom: 15px;
+  
   .readTime {
     color: #7a7a7a;  
   }

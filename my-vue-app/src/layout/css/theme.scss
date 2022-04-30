@@ -11,8 +11,10 @@
 
    /* 进度条高度 */
   --ngprogress-bar-height: 1px;
-}
 
+  /* 系统字体 */
+  --md-sytem-font: system-ui
+}
 
 
 @media screen and (width: 765px) {
@@ -20,6 +22,12 @@
     --m-full: 100%;
   }
 
+}
+
+.icon {
+  color: var(--half-gray-128);
+  vertical-align: middle;
+  font-size: 22px;
 }
 
 .max-full {

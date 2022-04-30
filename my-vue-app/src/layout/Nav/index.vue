@@ -1,25 +1,25 @@
 <script>
+import Profile from "./Profile.vue"
 export default defineComponent({
-  name: 'Nav',
-
-  setup() {
-    const Nav = reactive({
-      navData: [
-        {
-          name: 'Blog',
-          path: '/Blog'
-        },
-        {
-          name: 'Project',
-          path: '/project'
-        }
-      ]
-    })
-
-    return {
-      Nav
-    }
-  }
+    name: "Nav",
+    setup() {
+        const Nav = reactive({
+            navData: [
+                {
+                    name: "Blog",
+                    path: "/Blog"
+                },
+                {
+                    name: "Project",
+                    path: "/project"
+                }
+            ]
+        });
+        return {
+            Nav
+        };
+    },
+    components: { Profile }
 })
 </script>
 
@@ -31,6 +31,7 @@ export default defineComponent({
         {{ item.name }}
       </RouterLink>
     </template>
+    <Profile />
   </div>
 </template>
 

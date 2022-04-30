@@ -32,11 +32,27 @@ export default defineComponent({
 
 <style lang="scss" scoped>
   .template-container {
-    background-color: #c7c7c7;
     padding: 15px 10px;
-    border-radius: 4px;
 
-    ::v-deep h1 {
+    ::v-deep  {
+      h1 {
+        font-size: 2.25em;
+        font-weight: 800;
+        color: var(--md-h1-color);
+        font-family: var(--md-sytem-font);
+      }
+
+      code {
+        display: block;
+        margin: 20px 0;
+        min-height: 13em;
+        color: #fff;
+        padding: 5px;
+        background: rgb(17, 17, 17);
+      }
+    
+
+  
     }
   }
 </style>
