@@ -4,23 +4,82 @@
   const Height = ref(document.documentElement.offsetHeight)
   const Width = ref(document.documentElement.offsetWidth)
 
+  const Game = function() {
+    var o = {
+      state: {},
+      canvas: null,
+      ctx: null,
+    }
+    const canvasDom = canvas.value
+    const ctx = canvas.value.getContext('2d')
+    o.ctx = ctx
+    o.init = function() {
+      o.canvas.width = Width.value
+      o.canvas.height = Height.value
+    }
+    o.canvas = canvasDom
+    /* 注册舞台对象, 数组 */
+    o.regisState = function(state) {
+      o.state[state.name] = [state]
+    }
+    /* 初始化舞台 */
+    o.clearState = function() {
+      o.canvas.width = o.canvas.width
+      o.canvas.height = o.canvas.height
+    }
+
+
+    /* 画圆函数 */
+    o.loadCircle = function(ball) {
+      var ctx = o.ctx
+      o.ctx.beginPath()
+      ctx.arc(ball.x, ball.y, ball.size, 0, ball.angle, true);
+      ctx.fillStyle = ball.color
+      ctx.fill();
+    }
+
+    /* 渲染舞台 */
+    o.render = function(ball) {
+      setInterval(() => {
+        o.clearState()
+        for (const key in o.state) {
+          var item = o.state[key]
+          item.forEach(state => {
+            if (state.type === 'ball') {
+              o.loadCircle(state)
+              state.update()
+            }
+          
+        })
+        }
+      }, 1000 / 60);
+    }
+
+    return o
+  }
+
   const Ball = function() {
     var o = {
       x: 60,
       y: 65,
+      type: 'ball',
+      name: 'ball',
       speedX: 5,
       speedY: 5,
       size: 8,
       angle:  Math.PI * 2,
-      ballColor: 'rgb(127, 127, 127)'
+      color: 'rgb(127, 127, 127)'
+    }
+
+    o.move = function() {
+      o.x += o.speedX
+      o.y += o.speedY
     }
 
     o.update = function() {
-      o.x += o.speedX
-      o.y += o.speedY
-
+      o.move()
       if (o.x + o.size < 0 || o.x + o.size > Width.value) {
-        o.speedX = -o.speedX
+        o.speedX = -o.speedX  
       }
       if (o.y + o.size < 0 || o.y + o.size > Height.value) {
         o.speedY = -o.speedY
@@ -30,51 +89,20 @@
     return o
   }
 
-  const ball = Ball()
-  
-
-  const DrawBall = function(ctx) {
-    drawCircle(ball, ctx)
-  }
-
-  const drawCircle = function(o, ctx)  {
-    ctx.beginPath()
-    ball.update()
-    ctx.arc(o.x, o.y, o.size, 0, Math.PI * 2, true);
-    ctx.fillStyle = o.ballColor
-    ctx.fill();
-  }
-
-  const clearCavas = function(canvas) {
-    canvas.width = canvas.width
-    canvas.height = canvas.height
-  }
-
-  const render = function(ctx) {
-    clearCavas(ctx.canvas)
-    DrawBall(ctx)
-    requestAnimationFrame(() => {
-      render(ctx)
-    })
-  }
-
-  /* canvas 不能去通过 style 设置宽高, 影响绘制质量 */
-  const setCanvas = function(o, canvas) {
-    canvas.setAttribute("width", o.width + 'px')
-    canvas.setAttribute("height", o.height + 'px')
-
-  }
 
   onMounted(() => {
-    const canvasDom = canvas.value
-    const ctx = canvas.value.getContext('2d')
     canvas.value.style.width = Width.value
-    setCanvas({
-      width: Width.value, 
-      height: Height.value
-    }, canvasDom)
-    DrawBall(ctx)
-    render(ctx)
+    const ball = Ball()
+    const ball2 = Ball()
+    ball2.x = 800
+    ball2.color = 'rgb(255, 255, 0)'
+    ball2.name = 'ball2'
+    const game = Game()
+    game.init()
+    game.regisState(ball)
+    game.regisState(ball2)
+    game.render(ball)
+    game.render(ball2)
   })
 </script>
 
