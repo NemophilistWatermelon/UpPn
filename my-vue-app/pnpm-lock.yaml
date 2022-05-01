@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
   '@vitejs/plugin-vue': ^2.0.0
@@ -37,7 +37,7 @@ dependencies:
   element-plus: 2.0.6_vue@3.2.26
   eslint: 8.6.0
   eslint-config-prettier: 8.3.0_eslint@8.6.0
-  eslint-plugin-prettier: 4.0.0_1c588f61426b1faf18812943f1678311
+  eslint-plugin-prettier: 4.0.0_drmi6ykcnmp26gebffb7cz4dce
   eslint-plugin-vue: 8.2.0_eslint@8.6.0
   i: 0.3.7
   nprogress: 0.2.0
@@ -47,14 +47,14 @@ dependencies:
   vite-plugin-components: 0.13.3_vite@2.7.10
   vite-plugin-markdown: 2.0.2_vite@2.7.10
   vite-plugin-md: 0.13.0_vite@2.7.10
-  vite-plugin-voie: 0.7.3_b16d8f3abc8053a947354991e7b9177f
+  vite-plugin-voie: 0.7.3_wfwy6ov4qbj2srzvjgi6poixp4
   vue: 3.2.26
   vue-router: 4.0.0-beta.13_vue@3.2.26
   vuex: 4.0.2_vue@3.2.26
 
 devDependencies:
   '@vitejs/plugin-vue': 2.0.1_vite@2.7.10+vue@3.2.26
-  unplugin-auto-import: 0.6.4_@vueuse+core@8.3.1+vite@2.7.10
+  unplugin-auto-import: 0.6.4_4vxphsjjbj2zs5cf2fz2lvcgg4
   unplugin-vue-components: 0.18.0_vite@2.7.10+vue@3.2.26
   vite: 2.7.10_sass@1.50.1
 
@@ -584,7 +584,7 @@ packages:
       escape-html: 1.0.3
       lodash: 4.17.21
       lodash-es: 4.17.21
-      lodash-unified: 1.0.2_lodash-es@4.17.21+lodash@4.17.21
+      lodash-unified: 1.0.2_x2wgbdn67su72qcpoerjuvxru4
       memoize-one: 6.0.0
       normalize-wheel-es: 1.1.1
       vue: 3.2.26
@@ -791,7 +791,7 @@ packages:
       eslint: 8.6.0
     dev: false
 
-  /eslint-plugin-prettier/4.0.0_1c588f61426b1faf18812943f1678311:
+  /eslint-plugin-prettier/4.0.0_drmi6ykcnmp26gebffb7cz4dce:
     resolution: {integrity: sha512-98MqmCJ7vJodoQK359bqQWaxOE0CS8paAz/GgjaZLyex4TTk3g9HugoO89EqWCrFiOqn9EVvcoo7gZzONCWVwQ==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
@@ -1253,7 +1253,7 @@ packages:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
 
-  /lodash-unified/1.0.2_lodash-es@4.17.21+lodash@4.17.21:
+  /lodash-unified/1.0.2_x2wgbdn67su72qcpoerjuvxru4:
     resolution: {integrity: sha512-OGbEy+1P+UT26CYi4opY4gebD8cWRDxAT6MAObIVQMiqYdxZr1g3QHWCToVsm31x2NkLS4K3+MC2qInaRMa39g==}
     peerDependencies:
       '@types/lodash-es': '*'
@@ -1648,7 +1648,7 @@ packages:
     resolution: {integrity: sha512-8Y75pvTYkLJW2hWQHXxoqRgV7qb9B+9vFEtidML+7koHUFapnVJAZ6cKs+Qjz5Aw3aZWHMC6u0wJE3At+nSGwA==}
     dev: false
 
-  /unplugin-auto-import/0.6.4_@vueuse+core@8.3.1+vite@2.7.10:
+  /unplugin-auto-import/0.6.4_4vxphsjjbj2zs5cf2fz2lvcgg4:
     resolution: {integrity: sha512-gkjVKnugRCIh1JtwZhn8bdvdW8RW17WoCEJgJXJ9sGMsKrgP9xbaNMLULrmtrfxyGOabm42XXWoaR12EzdcVNA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -1775,7 +1775,7 @@ packages:
       vite: 2.7.10_sass@1.50.1
     dev: false
 
-  /vite-plugin-voie/0.7.3_b16d8f3abc8053a947354991e7b9177f:
+  /vite-plugin-voie/0.7.3_wfwy6ov4qbj2srzvjgi6poixp4:
     resolution: {integrity: sha512-OwAwziXPb8ywKHXfd9E1UXsEF2rRi4Dgb3F020s2lLWdtuY84xQH4JK84XwytFeht3TsexmJpVPHg2y17QdltQ==}
     peerDependencies:
       vite: ^2.0.0-beta.3
