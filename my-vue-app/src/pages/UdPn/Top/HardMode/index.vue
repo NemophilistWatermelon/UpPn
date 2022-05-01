@@ -3,8 +3,13 @@ export default defineComponent({
   name: 'HardMode',
   setup() {
     var rightInput = reactive({
-      setArr: []
+      setArr: [],
+      encouragement: ['Yep! 666', '哇 ! 你真厉害 😄', '棒👍'],
+      terrible: ['😞 小主你打错了哟~', '😬 退格再试试?', '😥 可能这个字太难了', '💪加油~'],
     })
+    
+    
+
     var leftInput = ref([])
     var equalInputIndex = ref(new Set())
     var unoEqualInputIndex = ref(new Set())
@@ -58,27 +63,29 @@ export default defineComponent({
 
 
 <template>
-    输入正确的下标 {{ equalInputIndex }}
-    <hr/>
-   输入错误的下标 {{ unoEqualInputIndex }}
-   {{ unoEqualInputIndex.size ? '😢 you are wrong' : '😁 you are right' }}
-     <hr/>
-    <div class="container" >
-       <div class="right">
-        <span>一段话</span>
-        <textarea @input="onRightInput" name="" id="" cols="30" rows="10"></textarea>
-        <div class="item" v-if="rightInput.setArr.length">
+    <div
+    class="max-full default-text height-2">
+      {{ unoEqualInputIndex.size ? rightInput.terrible[Math.floor(Math.random()  * (rightInput.terrible.length + 1))] : rightInput.encouragement[Math.floor(Math.random()  * (rightInput.encouragement.length + 1))] }}
+    </div>
+    <div class="max-full f-text-left" v-if="rightInput.setArr.length">
           <span 
           :class="[equalInputIndex.has(index) ? 'curTxt-active' : '', unoEqualInputIndex.has(index) ? 'curTxt-wrong' : '']"
           class="idx-item"
            v-for="(item, index) in rightInput.setArr">
             {{item}}
           </span>
-        </div>
+    </div>
+    <div class="container" >
+       <div class="right">
+        <span class="default-text">OrginText</span>
+        <textarea 
+        class="default-textarea"
+        @input="onRightInput" name="" id="" cols="30" rows="10"></textarea>
       </div>
       <div class="left">
-        <span>追上一段话</span>
+        <span class="default-text">TargetText</span>
         <el-input 
+        class="input-area"
         type="textarea"
         rows="5"
         v-model="leftInput"
@@ -91,27 +98,44 @@ export default defineComponent({
 
 
 <style lang="scss" scoped>
+.f-text-left {
+  text-align: left;
+}
+.height-2 {
+  height: 2em;
+}
+.idx-item {
+  display: inline-block;
+  padding: 0.6em;
+  margin: 0.34em;
+  background-color: #9e9e9e;
+  transition: all .3s;
+  &.curTxt-active {
+    color: green;
+    transform: translateY(-0.3em);
+  }
+  &.curTxt-wrong {
+    color: red;
+  }
+}
+
+.input-area {
+  ::v-deep textarea {
+    color: var(--half-gray-128);
+    background-color: unset;
+  }
+}
+
 .container {
   display: flex;
   width: 600px;
   margin: auto;
+  margin-top: 1.3em;
   .left, .right {
     width: 300px;
-    outline: 1px solid;
   }
   .right {
-    .idx-item {
-      display: inline-block;
-      padding: 5px;
-      margin: 5px;
-      background-color: #fafafa;
-      &.curTxt-active {
-        color: green
-      }
-      &.curTxt-wrong {
-        color: red;
-      }
-    }
+    
   }
 }
 </style>

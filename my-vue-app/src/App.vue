@@ -5,10 +5,19 @@
   <router-view></router-view>
 </template>
 
-<style>
+<style lang="scss">
   * {
     margin: 0;
     padding: 0;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      width: 5px;
+      background-color: var(--scorll-bar-color);
+    }
   }
   html,
   body,
