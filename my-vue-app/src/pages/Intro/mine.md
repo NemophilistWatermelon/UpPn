@@ -1,5 +1,5 @@
 # WaterMelon
-Hey! I'm a <span class="keyword">Front End Dev</span> based in ShangHai, China.
+Hey! My name is QinKai, a <span class="keyword">Front End Dev</span> based in ShangHai, China.
 
 
 I have used my front-end knowledge to make some interesting things.
