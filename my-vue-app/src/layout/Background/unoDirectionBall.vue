@@ -20,14 +20,15 @@
     o.canvas = canvasDom
     /* 注册舞台对象, 数组 */
     o.regisState = function(state) {
-      o.state[state.name] = [state]
+      state.forEach(item => {
+        o.state[item.name] = [item]
+      })
     }
     /* 初始化舞台 */
     o.clearState = function() {
       o.canvas.width = o.canvas.width
       o.canvas.height = o.canvas.height
     }
-
 
     /* 画圆函数 */
     o.loadCircle = function(ball) {
@@ -39,7 +40,7 @@
     }
 
     /* 渲染舞台 */
-    o.render = function(ball) {
+    o.render = function() {
       setInterval(() => {
         o.clearState()
         for (const key in o.state) {
@@ -93,16 +94,10 @@
   onMounted(() => {
     canvas.value.style.width = Width.value
     const ball = Ball()
-    const ball2 = Ball()
-    ball2.x = 800
-    ball2.color = 'rgb(255, 255, 0)'
-    ball2.name = 'ball2'
     const game = Game()
     game.init()
-    game.regisState(ball)
-    game.regisState(ball2)
-    game.render(ball)
-    game.render(ball2)
+    game.regisState([ball])
+    game.render()
   })
 </script>
 
