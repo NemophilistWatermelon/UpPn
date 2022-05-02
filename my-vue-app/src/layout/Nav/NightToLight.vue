@@ -1,6 +1,6 @@
 <script>
-import Light from './Light.vue'
-import Night from './Night.vue'
+import Light from './IconComponent/Light.vue'
+import Night from './IconComponent/Night.vue'
 import { usePreferredColorScheme } from '@vueuse/core'
 
 export default defineComponent({
@@ -93,7 +93,8 @@ export default defineComponent({
 <style scoped lang="scss">
 .icon-size {
   font-size: var(--cut-theme-font-icon-size);
-  .half-gray-128 {
+  vertical-align: middle;
+  &.half-gray-128 {
     color: var(--half-gray-128);
   }
 }

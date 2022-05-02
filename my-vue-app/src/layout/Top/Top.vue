@@ -1,13 +1,12 @@
 
 <script>
-import Logo from './Logo.vue'
-import NightToLight from './NightToLight.vue'
-
+// import Logo from './Logo.vue'
+import LogoV2 from './LogoV2.vue'
 export default defineComponent({
   name: 'Top',
   components: {
-    Logo,
-    NightToLight,
+    // Logo,
+    LogoV2,
   }
 })
 </script>
@@ -15,10 +14,8 @@ export default defineComponent({
 <template>
   <div class="top-container">
     <div class="l">
-      <Logo class="Logo"></Logo>
-    </div>
-    <div class="r">
-      <NightToLight class='icon-size'/>
+      <!-- <Logo class="Logo"></Logo> -->
+      <LogoV2 />
     </div>
   </div>
 </template>
@@ -27,13 +24,10 @@ export default defineComponent({
 
 <style lang="scss">
 .top-container {
-  width: 100%;
+  position: absolute;
   padding: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   box-sizing: border-box;
-  background-color: var(--bg-color);
+  // background-color: var(--bg-color);
   .l {
     padding-left: .3em;
 
@@ -41,9 +35,6 @@ export default defineComponent({
       font-size: 36px;
       color: var(--half-gray-128);
     }
-  }
-  .r {
-    padding-right: 15px;
   }
 }
 </style>
