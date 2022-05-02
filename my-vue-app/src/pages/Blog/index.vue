@@ -1,11 +1,12 @@
 <script>
   import Clock from './IconCompoent/Clock.vue'
-
+  import Title from '@/layout/Title/index.vue'
   export default defineComponent({
     name: 'BlogItem',
 
     components: {
-      Clock
+      Clock,
+      Title
     },
 
     setup() {
@@ -29,7 +30,8 @@
 </script>
 
 <template>
-  <div class="max-full">
+  <div class="max-full mt-3">
+    <Title title="Blogs" />
     <div class="post-item" v-for="item in mdRouter.BlogRoute">
       <RouterLink :to="'/posts/' + item.path ">{{ item.text}}</RouterLink>
       <div class="other"> 

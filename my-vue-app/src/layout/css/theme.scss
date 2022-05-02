@@ -24,7 +24,7 @@ html:root {
 
 @media screen and (max-width: 765px) {
   :root {
-    --m-full: 100%;
+    --m-full: 100% !important;
   }
 
 }
@@ -51,6 +51,10 @@ html:root {
   outline: none;
 }
 
+
+.mt-3 {
+  margin-top: 3.4em;
+}
 
 a {
   text-decoration: none;

@@ -1,11 +1,14 @@
 <template>
-  <div class="list-item default-text">
+  <a
+  :href="$attrs.url"
+  target="_blank"
+  class="list-item default-text">
     <component class="default-text fz-12" :is="$attrs.icon"></component>
     <div class="box-item">
       <p class="name"> {{ $attrs.name }}</p>
       <p class="desc">{{ $attrs.desc }}</p>
     </div>
-  </div>
+  </a>
 
 </template>
 
@@ -22,13 +25,15 @@
     background-color: var(--hover-bg-color);
   }
   .fz-12 {
-    font-size: 3.8em;
+    font-size: 1.8em;
   }
   .box-item {
     margin-left: 1em;
     .name {
       font-size: 1.3em;
       display: inline-block;
+      font-family: var(--inter-font-family);
+      font-weight: 700;
       margin-bottom: 0.3em;
       color: var(--item-name-color);
     }

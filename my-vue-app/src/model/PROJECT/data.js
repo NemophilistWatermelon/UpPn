@@ -1,23 +1,27 @@
-const config = {
-  chrome_ads_filter: {
-    // 项目 git hub 地址
-    demoGitHubUrl: '',
-    // 项目名称
-    demoName: 'ChromeAds',
-    // 项目描述
-    demoDescription: '过滤广告插件',
-    // 项目使用技术
-    demoTechnologies: ['ECMAScript5 | NativeJS', 'Chrome Extentsion'],
-  },
+import AdsIcon from './iconComponent/Ads.vue'
+import Copy from './iconComponent/Copy.vue'
 
-  decn_code_copy: {
-    // 项目 git hub 地址
-    demoGitHubUrl: '',
-    // 项目名称
-    demoName: 'DscnEasyCody',
-    // 项目描述
-    demoDescription: '无登录转换 dom 复制内容!',
-    // 项目使用技术
-    demoTechnologies: ['ECMAScript5 | NativeJS', 'Chrome Extentsion'],
-  }
-}
+const Projects = reactive({
+  pro: [
+    {
+      capName: 'Extions 插件:',
+      capList: [
+        {
+          icon: AdsIcon,
+          name: 'Chrome-Ads',
+          desc: '一个百度搜索过滤广告插件',
+          url: 'https://github.com/NemophilistWatermelon/chrome-ads'
+        },
+        {
+          icon: Copy,
+          name: 'Dscn-Web-Copy',
+          desc: 'Dscn 网无登录拷贝内容',
+          url: 'https://github.com/NemophilistWatermelon/DSCN-COPY-CODE'
+        }
+      ]
+    }
+  ]
+})
+
+
+export default Projects
