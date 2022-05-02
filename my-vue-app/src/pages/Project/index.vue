@@ -1,16 +1,10 @@
 <script>
-import Template from '../Blog/template.vue';
 import Clock from './IconCompoent/Clock.vue';
 import Excel from './IconCompoent/Excel.vue';
 
 export default defineComponent({
   name: 'Project',
 
-  components: {
-    Clock,
-    Excel,
-    Template
-  },
   setup() {
     const mdRouter = reactive({
       ProjectRoute: [
@@ -20,14 +14,14 @@ export default defineComponent({
             {
               title: "JSON TO EXCEL",
               desc: "一个在线工具实现EXCEL导出",
-              path: "https://json2excel.vercel.app/"
-              // icon: <Excel />,
+              path: "https://json2excel.vercel.app/",
+              icon: Clock
             },
             {
               title: "JSON TO EXCEL",
               desc: "一个在线工具实现EXCEL导出",
-              path: "https://json2excel.vercel.app/"
-              // icon: <Excel />,
+              path: "https://json2excel.vercel.app/",
+              icon: Excel
             }
           ]
         },
@@ -54,17 +48,20 @@ export default defineComponent({
     <h1> 项目 </h1>
     <p>我引以为豪的项目清单</p>
     <div class="project_list">
-      <div class="project_item" v-for="item in mdRouter.ProjectRoute">
+      <div class="project_item" :key="index" v-for="(item, index) in mdRouter.ProjectRoute">
         <template v-if="item?.children?.length">
           <h2>{{ item.title }}</h2>
           <div class="project_item_list">
-            <div class="project_item_item" v-for="item in item.children" @click="getNewsDetail(item.path)">
+            <div 
+            class="project_item_item"
+            :key="idx"
+             v-for="(it, idx) in item.children" @click="getNewsDetail(it.path)">
               <div class="project_item_item_icon">
-                <Excel />
+                <component :is="it.icon"></component>
               </div>
               <div class="project_item_item_content">
-                <h3>{{ item.title }}</h3>
-                <p>{{ item.desc }}</p>
+                <h3>{{ it.title }}</h3>
+                <p>{{ it.desc }}</p>
               </div>
             </div>
           </div>
