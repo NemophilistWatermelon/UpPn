@@ -1,7 +1,7 @@
 @import url('./light.css');
 @import url('./night.css');
-
-:root {
+@import url('./font/regisFont.css');
+html:root {
   --half-gray-128: rgb(128, 128, 128);
   --cut-theme-font-icon-size: 18px; 
 
@@ -12,9 +12,13 @@
    /* 进度条高度 */
   --ngprogress-bar-height: 1px;
 
-  --common-text: system-ui
+  --common-text: system-ui;
   /* 系统字体 */
-  --md-sytem-font: system-ui
+  --md-sytem-font: system-ui;
+
+  --intro-h1-fonWeight: 800;
+
+  --inter-font-family: 'Inter', var(--md-sytem-font);
 }
 
 
