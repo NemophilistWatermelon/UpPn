@@ -1,6 +1,5 @@
 <script>
 import Top from './Top/Top.vue'
-import Nav from './Nav/index.vue'
 import Bottom from './Bottom/index.vue'
 import unoDirectionBall from './Background/unoDirectionBall.vue'
 export default defineComponent({
@@ -8,7 +7,6 @@ export default defineComponent({
 
   components: {
     Top,
-    Nav,
     Bottom,
     unoDirectionBall
   }
@@ -18,7 +16,6 @@ export default defineComponent({
 <template>
   <div class="layout-container">
     <Top />
-    <Nav />
     <router-view></router-view>
     <Bottom />
     <unoDirectionBall />

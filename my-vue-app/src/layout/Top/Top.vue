@@ -1,11 +1,13 @@
 
 <script>
 // import Logo from './Logo.vue'
+import Nav from '@/layout/Nav/index.vue'
 import LogoV2 from './LogoV2.vue'
 export default defineComponent({
   name: 'Top',
   components: {
     // Logo,
+    Nav,
     LogoV2,
   }
 })
@@ -17,6 +19,9 @@ export default defineComponent({
       <!-- <Logo class="Logo"></Logo> -->
       <LogoV2 />
     </div>
+    <div class="r">
+      <Nav />
+    </div>
   </div>
 </template>
 
@@ -24,7 +29,8 @@ export default defineComponent({
 
 <style lang="scss">
 .top-container {
-  position: absolute;
+  display: flex;
+  justify-content: space-between;
   padding: 5px;
   box-sizing: border-box;
   // background-color: var(--bg-color);
