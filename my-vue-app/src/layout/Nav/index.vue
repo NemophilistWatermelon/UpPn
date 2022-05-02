@@ -51,7 +51,7 @@ export default defineComponent({
       color: var(--nav-text-color);
       text-decoration: none;
       margin-right: 15px;
-      font-size: 19px;
+      font-size: var(--nav-text-size);
     }
   }
 }

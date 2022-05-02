@@ -30,7 +30,7 @@
   .box-item {
     margin-left: 1em;
     .name {
-      font-size: 1.3em;
+      font-size: 1.1em;
       display: inline-block;
       font-family: var(--inter-font-family);
       font-weight: 700;
@@ -39,6 +39,7 @@
     }
     .desc {
       opacity: .65;
+      font-size: .08em;
     }
   }
 }

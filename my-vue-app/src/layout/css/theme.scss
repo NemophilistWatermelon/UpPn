@@ -19,6 +19,9 @@ html:root {
   --intro-h1-fonWeight: 800;
 
   --inter-font-family: 'Inter', var(--md-sytem-font);
+
+  --nav-text-size: 16px;
+  --nav-icon-size: 20px;
 }
 
 
@@ -32,7 +35,7 @@ html:root {
 .icon {
   color: var(--half-gray-128);
   vertical-align: middle;
-  font-size: 22px;
+  font-size: var(--nav-icon-size)
 }
 
 .max-full {

@@ -77,13 +77,13 @@ export default defineComponent({
 <template>
   <div class="s-c-n">
     <Light
-      class="icon-size half-gray-128"
+      class="icon"
      @click="changeMode('dark')"
       v-if="currentTheme === 'light'"
     />
     
     <Night
-      class="icon-size half-gray-128"
+      class="icon"
      @click="changeMode('light')" 
      v-if="currentTheme === 'dark'" 
     />

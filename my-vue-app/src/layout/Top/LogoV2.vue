@@ -16,8 +16,8 @@
 <style lang="scss" scoped>
 img {
   cursor: pointer;
-  width: 8em;
-  height: 5em;
+  width: 5em;
+  height: 3em;
   filter: var(--logo-filter-color);
 }
 
