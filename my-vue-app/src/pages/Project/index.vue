@@ -9,10 +9,14 @@ const Project = Model.readByKey('pro')
 <template>
   <div class="max-full default-text mt-3">
     <Title title="Projects" />
-    <div class="list-container max-full" 
-    :key="index"
-    v-for="(pro, index) in Project">
-      <div class="catgory-name">{{ pro.capName }} </div>
+    <div 
+      class="list-container max-full" 
+      :key="index"
+      v-for="(pro, index) in Project"
+    >
+      <div class="catgory-name">
+        {{ pro.capName }} 
+      </div>
       <div class="catgory-item">
         <ListItem 
           :key="idx"

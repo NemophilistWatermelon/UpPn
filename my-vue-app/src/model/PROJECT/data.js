@@ -1,5 +1,7 @@
 import AdsIcon from './iconComponent/Ads.vue'
 import Copy from './iconComponent/Copy.vue'
+import Spider from './iconComponent/Spider.vue'
+import Player from './iconComponent/Player.vue'
 
 const Projects = reactive({
   pro: [
@@ -17,6 +19,23 @@ const Projects = reactive({
           name: 'Dscn-Web-Copy',
           desc: 'Dscn 网无登录拷贝内容',
           url: 'https://github.com/NemophilistWatermelon/DSCN-COPY-CODE'
+        }
+      ]
+    },
+    {
+      capName: 'Spider for NodeJS:',
+      capList: [
+        {
+          icon: Spider,
+          name: '58 房产信息',
+          desc: '用 Node.js 实现 爬取 58 房产信息',
+          url: 'https://github.com/NemophilistWatermelon/58-Node-'
+        },
+        {
+          icon: Player,
+          name: 'Musicer',
+          desc: '纯 ECMAScript 实现的音乐播放器',
+          url: 'https://github.com/NemophilistWatermelon/music_player'
         }
       ]
     }
