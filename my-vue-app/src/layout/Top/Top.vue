@@ -31,7 +31,7 @@ export default defineComponent({
 .top-container {
   display: flex;
   justify-content: space-between;
-  padding: 5px;
+  padding: 1em;
   box-sizing: border-box;
   // background-color: var(--bg-color);
   .l {

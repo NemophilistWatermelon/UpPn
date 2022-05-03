@@ -13,6 +13,9 @@ Browser Plugin:
   - CSDN Copy Code: CSDN website is a plug-in that can copy text without login.
   - ...
 
+How Find Me:
+  - <span class='keyword'>[Git](https://github.com/NemophilistWatermelon?tab=repositories)</span> 
+
 Skill:
   - About Data Proces Show: <span class='keyword'>Echarts</span>
   - Front End Frame: <span class='keyword'>VUE</span>

@@ -91,6 +91,15 @@ export default defineComponent({
 </template>
 
 <style scoped lang="scss">
+.s-c-n {
+  cursor: pointer;
+  .icon {
+    transition: color .3s ease;
+      &:hover {
+        color: var(--intro-h1);
+      }
+  }
+}
 .icon-size {
   font-size: var(--cut-theme-font-icon-size);
   vertical-align: middle;

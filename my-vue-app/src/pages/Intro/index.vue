@@ -23,22 +23,29 @@
 .intro-container {
   padding: 1.2em;
   box-sizing: border-box;
+  font-family: var(--inter-font-family);
   ::v-deep {
     p {
       margin-top: 2em;
-      color: var(--intro-h1);
+      color: var(--half-gray-128);
+    }
+    
+    a {
+      color: var(--md-h1-color);
     }
 
     .keyword {
-      color: var(--half-gray-128);
+      color: var(--md-h1-color);
     }
 
     ul {
-      color: #fff;
+      color: var(--half-gray-128);
       margin-top: 10px;
+      font-family: var(--common-font-family);
+      margin-left: 1.5em;
     }
     p {
-        font-family: system-ui;
+        font-family: 'inter var', 'sans-serif';
         line-height: 1.6;
         letter-spacing: 1px;
       }

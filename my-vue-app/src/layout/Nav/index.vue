@@ -52,6 +52,11 @@ export default defineComponent({
       text-decoration: none;
       margin-right: 15px;
       font-size: var(--nav-text-size);
+      font-family: var(--common-font-family);
+      transition: color .3s ease;
+      &:hover {
+        color: var(--intro-h1);
+      }
     }
   }
 }

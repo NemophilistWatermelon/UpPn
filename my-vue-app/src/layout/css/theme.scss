@@ -1,6 +1,7 @@
 @import url('./light.css');
 @import url('./night.css');
 @import url('./font/regisFont.css');
+
 html:root {
   --half-gray-128: rgb(128, 128, 128);
   --cut-theme-font-icon-size: 22px; 
@@ -19,6 +20,7 @@ html:root {
   --intro-h1-fonWeight: 800;
 
   --inter-font-family: 'Inter', var(--md-sytem-font);
+  --common-font-family: 'inter var', 'sans-serif', 'system-ui';
 
   --nav-text-size: 16px;
   --nav-icon-size: 20px;
@@ -62,4 +64,6 @@ html:root {
 a {
   text-decoration: none;
 }
+
+
 

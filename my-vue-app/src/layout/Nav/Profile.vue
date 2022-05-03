@@ -10,3 +10,15 @@ import NightToLight from './NightToLight.vue'
   <NightToLight />
 
 </template>
+
+
+<style scoped lang="scss">
+a {
+  .icon {
+    transition: color .3s ease;
+      &:hover {
+        color: var(--intro-h1);
+      }
+  }
+}
+</style>

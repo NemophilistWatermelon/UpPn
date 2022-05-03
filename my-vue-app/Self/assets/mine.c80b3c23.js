@@ -17,6 +17,10 @@ const n={},e=`<h1>WaterMelon</h1>
 <p>...</p>
 </li>
 </ul>
+<p>How Find Me:</p>
+<ul>
+<li><span class='keyword'><a href="https://github.com/NemophilistWatermelon?tab=repositories">Git</a></span></li>
+</ul>
 <p>Skill:</p>
 <ul>
 <li>About Data Proces Show: <span class='keyword'>Echarts</span></li>

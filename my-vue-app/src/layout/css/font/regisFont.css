@@ -2,3 +2,9 @@
   font-family: 'inter';
   src: url(./Inter-ExtraBold.otf);
 }
+
+
+@font-face {
+  font-family: 'inter var';
+  src: url(./Inter.ttf);
+}

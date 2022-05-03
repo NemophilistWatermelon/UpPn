@@ -32,6 +32,15 @@ const skill = {
       readTime: '15 min'
     })
   },
+  Vue2vs3: {
+    ...new Template({
+      path: 'vue2-vs-vue3',
+      name: 'vue2 与 vue3 上手感觉',
+      text: 'vue2 vue3 上手感觉',
+      time: 'May 03',
+      readTime: '1 min'
+    })
+  }
 }
 
 const life = {
@@ -52,6 +61,7 @@ const data = {
   技能篇: [
     skill.bar,
     skill.前端开发套路,
+    skill.Vue2vs3,
   ],
   // 生活小记
   生活小记: [
