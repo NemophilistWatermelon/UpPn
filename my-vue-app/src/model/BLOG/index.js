@@ -1,17 +1,21 @@
 import data from './data.js'
 
 
-class Base { 
-  constructor() { 
+class Base {
+  constructor() {
 
   }
 
-  static instanceo { 
+  static instanceo() {
     return new this()
   }
-  
+
   readByKey(key) {
     return data[key]
+  }
+
+  readKey() {
+    return Object.keys(data)
   }
 }
 
