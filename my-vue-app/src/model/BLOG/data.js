@@ -19,7 +19,28 @@ const skill = {
       path: 'bar',
       name: '惊呆!',
       text: '12313',
-      time: 'Feb 19',
+      time: 'Apr 31',
+      readTime: '3 min'
+    })
+  },
+  前端开发套路: {
+    ...new Template({
+      path: 'qian-duan-kai-fa',
+      name: '前端开发套路',
+      text: '前端开发套路',
+      time: 'May 03',
+      readTime: '15 min'
+    })
+  },
+}
+
+const life = {
+  上海疫情: {
+    ...new Template({
+      path: 'shang-hai-yi-qing',
+      name: '上海疫情😢!',
+      text: '上海疫情😢',
+      time: 'Apr 31',
       readTime: '3 min'
     })
   }
@@ -29,10 +50,13 @@ const skill = {
 const data = {
   // 技能篇
   技能篇: [
-    skill.bar
+    skill.bar,
+    skill.前端开发套路,
   ],
   // 生活小记
-  生活小记: {},
+  生活小记: [
+    life.上海疫情,
+  ],
   // 心灵鸡汤
   心灵鸡汤: {},
 }

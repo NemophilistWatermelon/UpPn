@@ -14,14 +14,17 @@
     },
 
     setup() {
+      /* 定义 Blog 数据 */
       const Blog = reactive({
+        // 标题
         blogCat: ModelBolg.readKey(),
+        // 当前高亮
         currentTag: '',
+        // 当前高亮对应的 blog 数据
         currentBlog: []
       })
       Blog.currentTag = Blog.blogCat[0]
 
-      console.log(Blog)
 
       const readBlogDataByKey = function(key) {
         Blog.currentTag = key
@@ -29,21 +32,9 @@
       }
 
       readBlogDataByKey(Blog.currentTag)
-      console.log(Blog)
-      const mdRouter = reactive({
-        BlogRoute: [
-          {
-            path: 'bar',
-            name: 'self',
-            text: '惊呆! ',
-            time: 'Feb 19',
-            readTime: '1min'
-          }
-        ]
-      })
+
 
       return {
-        mdRouter,
         Blog,
         readBlogDataByKey
       }

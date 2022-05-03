@@ -42,6 +42,14 @@ export default defineComponent({
         color: var(--md-h1-color);
         font-family: var(--md-sytem-font);
       }
+      
+      li,
+      p,
+      h2, 
+      h3 {
+        color: var(--half-gray-128);
+      }
+
 
       code {
         display: block;
