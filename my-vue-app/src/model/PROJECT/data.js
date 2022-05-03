@@ -2,6 +2,7 @@ import AdsIcon from './iconComponent/Ads.vue'
 import Copy from './iconComponent/Copy.vue'
 import Spider from './iconComponent/Spider.vue'
 import Player from './iconComponent/Player.vue'
+import PainStr from './iconComponent/PainStr.vue'
 
 const Projects = reactive({
   pro: [
@@ -38,7 +39,18 @@ const Projects = reactive({
           url: 'https://github.com/NemophilistWatermelon/music_player'
         }
       ]
-    }
+    },
+    {
+    capName: 'Cool CSS:',
+    capList: [
+      {
+        icon: PainStr,
+        name: 'PainStr',
+        desc: '封装的动态插入 CSS 样式, 通过循环插入样式, 慢慢插入 CSS 出现效果',
+        url: 'https://github.com/NemophilistWatermelon/PaintStr'
+      }
+    ]
+    },
   ]
 })
 
