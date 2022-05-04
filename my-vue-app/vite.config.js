@@ -3,13 +3,13 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 const mdPlugin = require('vite-plugin-markdown')
 import path from 'path'
+
 export default defineConfig({
   plugins: [
     vue(),
     AutoImport({ /* options */
       imports: ["vue", "vue-router"]
     }),
-    // Markdown(),
     mdPlugin.plugin({
       mode: ['html']
     })

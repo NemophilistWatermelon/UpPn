@@ -1,0 +1,30 @@
+.console {
+  color: rgb(183, 168, 100)
+}
+.log {
+  color:rgb(128, 166, 101)
+}
+
+.import,
+.from,
+.const,
+.let, 
+.function {
+  color:rgb(203, 118, 118)
+}
+
+.zkh, 
+.ykh,
+.fun_zkh, 
+.dot {
+  color: rgb(102, 102, 102);
+}
+
+.switch, 
+.else,
+.if,
+.case,
+ .Vue,
+ .prototype{
+  color: rgb(128, 166, 101);
+}

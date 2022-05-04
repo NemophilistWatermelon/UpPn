@@ -1,19 +1,21 @@
 <script >
+
+import { markdown } from './wordsReducer'
 export default defineComponent({
   name: 'template',
   
   setup() {
     const route = useRoute()
     const str = ref()
-    
+
     const unMdByRoute = async function(callback) {
       const mdFile = import.meta.glob('./*.md')
       const mdhtml = mdFile[`./${route.params.md}.md`]()
       callback(await mdhtml)
     }
     unMdByRoute(target => {
-      console.log(target.html)
-      str.value = target.html
+      var html = markdown(target.html)
+      str.value = html
     })
     return {
       str
