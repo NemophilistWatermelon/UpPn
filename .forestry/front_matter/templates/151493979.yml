@@ -1,4 +1,14 @@
 ---
 label: 游客151493979
 hide_body: true
-fields: []
+fields:
+- name: '313211'
+  type: number
+  label: '31321'
+  description: '12313'
+  default: 0
+  required: true
+  config:
+    min: 
+    max: 
+    step: 
