@@ -103,7 +103,8 @@ const matchArray = function () {
 export const markdown = function (html) {
   const keyword = matchArray()
   // 匹配声明的变量
-  var matchArr = html.match(/(?<=let).+(?=\=)|(?<=const).+(?=\=)|(?<=function).+(\s)(?=\()/ig)
+  var matchArr = html.match(/(?<=let).+(?=\=)|(?<=const).+(?=\=)|(?<=function).+(\s)(?=\()/ig) || []
+  
   matchArr.forEach(item => { 
     html = html.replace(new RegExp(item, 'g'), `<span class='bl'>${item}</span>`)
   })
