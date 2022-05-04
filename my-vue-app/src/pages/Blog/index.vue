@@ -91,7 +91,7 @@
 .post-item {
   padding: 10px;
   margin-bottom: 15px;
-  
+  font-family: var(--common-font-family);
   .readTime {
     color: #7a7a7a;  
   }
@@ -110,7 +110,7 @@
     opacity: .75;
     transition: all 1s;
     color: var(--half-gray-128);
-    vertical-align: middle; 
+    font-family: var(--common-font-family);
   }
   .other {
     margin-top: 3px;

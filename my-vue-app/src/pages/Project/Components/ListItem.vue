@@ -39,7 +39,7 @@
     }
     .desc {
       opacity: .65;
-      font-size: .08em;
+      font-size: .8em;
     }
   }
 }

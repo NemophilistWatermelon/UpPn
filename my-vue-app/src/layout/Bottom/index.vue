@@ -28,12 +28,13 @@ import { useRouter } from 'vue-router'
     font-weight: 700;
     letter-spacing: 3px;
     color: var(--half-gray-128);
-    font-family: var(--sytem-font);
-    border-bottom: 1px solid transparent;
-    transition: .3s all ease-in;
+    font-family: var(--common-font-family);
+    border-bottom: 2px solid transparent;
+    transition: .3s all ease;
 
     &:hover {
-      border-bottom: 1px solid;
+      color: var(--intro-h1);
+      border-bottom: 2px solid;
     }
   }
   
