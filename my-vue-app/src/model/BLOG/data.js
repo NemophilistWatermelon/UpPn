@@ -52,7 +52,17 @@ const life = {
       time: 'Apr 31',
       readTime: '3 min'
     })
-  }
+  },
+  前端之路: {
+    ...new Template({
+      path: 'qian-duan-zhi-lu',
+      name: '如何踏上这条前端路!',
+      text: '如何踏上这条前端路',
+      time: 'May 03',
+      readTime: '未知'
+    })
+  },
+
 }
 
 
@@ -65,6 +75,7 @@ const data = {
   ],
   // 生活小记
   生活小记: [
+    life.前端之路,
     life.上海疫情,
   ],
   // 心灵鸡汤
