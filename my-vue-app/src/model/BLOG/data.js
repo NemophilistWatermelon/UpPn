@@ -16,7 +16,7 @@ const Template = function (o) {
 const skill = {
   bar: {
     ...new Template({
-      path: 'bar',
+      path: 'playground',
       name: '惊呆!',
       text: '12313',
       time: 'Apr 31',

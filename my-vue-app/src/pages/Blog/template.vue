@@ -9,6 +9,11 @@ export default defineComponent({
     const str = ref()
 
     const unMdByRoute = async function(callback) {
+      const allFile = import.meta.glob('./*')
+      log({
+        allFile,
+        meta: import.meta
+      })
       const mdFile = import.meta.glob('./*.md')
       const mdhtml = mdFile[`./${route.params.md}.md`]()
       callback(await mdhtml)
@@ -63,7 +68,7 @@ export default defineComponent({
         min-height: 13em;
         color: #fff;
         padding: 5px;
-        background: var(--half-gray-128);
+        background: var(--md-code-bg);
       }
     
 

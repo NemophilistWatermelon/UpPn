@@ -29,7 +29,7 @@ var routes = [
       Blog,
       Project,
       {
-        path: '/posts/:md',
+        path: '/posts/:md*',
         component: () => import('@/pages/Blog/template.vue'),
       }
     ]
