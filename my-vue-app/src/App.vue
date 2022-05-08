@@ -2,16 +2,19 @@
 </script>
 
 <template>
+
   <router-view></router-view>
+
 </template>
 
 <style lang="scss">
+
   * {
     margin: 0;
     padding: 0;
     &::-webkit-scrollbar {
       width: 5px;
-      height: 10px;
+      height: 1px;
     }
     &::-webkit-scrollbar-thumb {
       border-radius: 10px;
@@ -32,8 +35,9 @@
     overflow: auto;
     background-color: var(--bg-color);
   }
-#nprogress .bar {
-  height: var(--ngprogress-bar-height) !important;
-  background: var(--ngprogress-bar-color) !important;
-}
+  #nprogress .bar {
+    height: var(--ngprogress-bar-height) !important;
+    background: var(--ngprogress-bar-color) !important;
+  }
+
 </style>

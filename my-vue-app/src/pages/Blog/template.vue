@@ -54,12 +54,13 @@ export default defineComponent({
 
 
       code {
+        overflow: auto;
         display: block;
         margin: 20px 0;
         min-height: 13em;
         color: #fff;
         padding: 5px;
-        background: rgb(17, 17, 17);
+        background: var(--half-gray-128);
       }
     
 
