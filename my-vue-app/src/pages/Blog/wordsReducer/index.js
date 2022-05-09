@@ -20,6 +20,9 @@ const getTemplateBy = function (obj) {
 
 const matchArray = function () {
   var match = [
+    'async',
+    'await',
+    'then',
     'switch',
     'Vue',
     'prototype',
@@ -95,7 +98,7 @@ const matchArray = function () {
         orginTxt: '.'.match(/([\.])/g),
         orginClass: 'dot'
       })
-    }
+    },
   ) 
   return list
 }
@@ -104,7 +107,6 @@ export const markdown = function (html) {
   const keyword = matchArray()
   // 匹配声明的变量
   var matchArr = html.match(/(?<=let).+(?=\=)|(?<=const).+(?=\=)|(?<=function).+(\s)(?=\()/ig) || []
-  
   matchArr.forEach(item => { 
     html = html.replace(new RegExp(item, 'g'), `<span class='bl'>${item}</span>`)
   })

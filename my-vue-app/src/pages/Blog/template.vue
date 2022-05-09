@@ -65,7 +65,7 @@ export default defineComponent({
         overflow: auto;
         display: block;
         margin: 20px 0;
-        min-height: 13em;
+        // min-height: 13em;
         color: #fff;
         padding: 5px;
         background: var(--md-code-bg);

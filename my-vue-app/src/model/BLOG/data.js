@@ -40,6 +40,15 @@ const skill = {
       time: 'May 03',
       readTime: '1 min'
     })
+  },
+  土发造炮: {
+    ...new Template({
+      path: 'JS-Async',
+      name: '土发造炮-异步',
+      text: '土发造炮-异步',
+      time: 'May 09',
+      readTime: '30 min'
+    })
   }
 }
 
@@ -78,9 +87,10 @@ const life = {
 const data = {
   // 技能篇
   技能篇: [
-    skill.bar,
-    skill.前端开发套路,
+    skill.土发造炮,
     skill.Vue2vs3,
+    skill.前端开发套路,
+    skill.bar,
   ],
   // 生活小记
   生活小记: [
