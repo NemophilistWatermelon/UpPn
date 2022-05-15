@@ -5,7 +5,7 @@
  * 
  */
 
-const Template = function (o) { 
+const Template = function (o) {
   this.path = o.path
   this.name = o.name
   this.text = o.text

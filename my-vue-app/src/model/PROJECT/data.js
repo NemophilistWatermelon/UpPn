@@ -3,6 +3,8 @@ import Copy from './iconComponent/Copy.vue'
 import Spider from './iconComponent/Spider.vue'
 import Player from './iconComponent/Player.vue'
 import PainStr from './iconComponent/PainStr.vue'
+import Blog from './iconComponent/Blog.vue'
+
 
 const Projects = reactive({
   pro: [
@@ -41,15 +43,26 @@ const Projects = reactive({
       ]
     },
     {
-    capName: 'Cool CSS:',
-    capList: [
-      {
-        icon: PainStr,
-        name: 'PainStr',
-        desc: '封装的动态插入 CSS 样式, 通过循环插入样式, 慢慢插入 CSS 出现效果',
-        url: 'https://github.com/NemophilistWatermelon/PaintStr'
-      }
-    ]
+      capName: 'Cool CSS:',
+      capList: [
+        {
+          icon: PainStr,
+          name: 'PainStr',
+          desc: '封装的动态插入 CSS 样式, 通过循环插入样式, 慢慢插入 CSS 出现效果',
+          url: 'https://github.com/NemophilistWatermelon/PaintStr'
+        }
+      ]
+    },
+    {
+      capName: '雜項:',
+      capList: [
+        {
+          icon: Blog,
+          name: '杂货铺',
+          desc: '基于 Vue-Press 抒写的个人博文',
+          url: 'https://self-blog-five.vercel.app/'
+        }
+      ]
     },
   ]
 })
