@@ -16,6 +16,10 @@ export default defineComponent({
                 {
                     name: "双拼",
                     path: "/udpn"
+                },
+                {
+                    name: "Gernarator",
+                    path: "/Gernerator"
                 }
             ]
         });

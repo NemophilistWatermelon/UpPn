@@ -8,6 +8,9 @@ import udpn from './udpn'
 import Blog from './Blog'
 // Project 路由
 import Project from './Project' 
+// Gernerator 路由
+import Gernerator from './Gernerator' 
+
 
 const Layout = () => import('@/layout/index.vue')
 
@@ -28,6 +31,7 @@ var routes = [
       udpn,
       Blog,
       Project,
+      Gernerator,
       {
         path: '/posts/:md*',
         component: () => import('@/pages/Blog/template.vue'),
