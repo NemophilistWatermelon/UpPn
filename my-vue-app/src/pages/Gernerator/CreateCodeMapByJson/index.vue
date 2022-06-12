@@ -6,72 +6,45 @@
             Editor 
         },
         setup() {
-            let inputVal = ref(`{
-    "main": "批量撒点代码",
-    "地图触发prop": "getMap",
-    "批量遍历对象": "data",
-    "坐标参数是": "coords",
-    "撒点类型是": "point",
-    "产生地图层级是": "point-level",
-    "是否需要清除其他图层": "false"
-}`)
-            let outputVal = ref('23233')
-                /**
-                 *  {
-                 *      main: '批量撒点代码',
-                 *      地图触发prop: 'getMap',
-                 *      批量遍历对象: 'data',
-                 *      坐标参数是: 'coords',
-                 *      撒点类型是: 'point'
-                 *  }
-                 */
+            let inputVal = ref()
 
+            let templatePointJson = {
+                "main": "批量撒点代码",
+                "地图触发prop": "getMap",
+                "批量遍历对象": "data",
+                "坐标参数是": "coords",
+                "撒点类型是": "point",
+                "产生地图层级是": "point-level",
+                "是否需要清除其他图层": "false",
+                "定制撒点效果": {
+                    类型: 'picture-marker',
+                    引用图片地址: 'url',
+                    颜色: '[255, 255, 0, 0.8]',
+                    大小: {
+                        宽: '0px',
+                        高: '0px'
+                    }
+                }
+            }
+            inputVal.value = JSON.stringify(templatePointJson, null, 2)
+            let outputVal = ref()
+            const globFile = import.meta.glob('./*.js')
             const codeMap = {
-                '批量撒点代码': (args) => {
-                    let mapProp = args.地图触发prop || 'getMap'
-
-                   return  `
- let paramList = []
-
-for (let i = 0; i < data; i++) {
-    let item = data[i]
-    let coords = item[coords]
-
-    paramList.push({
-        coords: coords,
-    })
-}
-
-const param = {
-    type: 'point',
-    clearOld: 'false',
-    operationLevel: 'point-level',
-    symbol: {
-        type: 'simple-fill',
-        color: [255, 255, 0, 0.8],
-        outline: {
-            color: [0, 0, 255, 0.8],
-            width: "3px"
-        },
-    },
-    data: paramList,
-}
-
-
-
-this.$bus.$emit(getMap, (win) => {
-    win._showGraphicsByDataJson(param)
-})
-
-                    `
+                '批量撒点代码': async (args) => {
+                    const file = await (await globFile['./_showGraphicsByDataJson.js'])()
+                    return await file.default(args)
                 }
             }
 
-            const onUpdate = function(val) {
+            const formatCode = function(code) {
+                return JSON.parse(JSON.stringify(code, null, 2))
+            }
+
+            const onUpdate = async function(val) {
                 try {
                 var code = JSON.parse(val)
-                outputVal.value = codeMap[code.main](code)
-                console.log(outputVal.value)
+                outputVal.value = formatCode(await codeMap[code.main](code))
+        
                 } catch (error) {
                     throw Error('错误' + error)
                 }
