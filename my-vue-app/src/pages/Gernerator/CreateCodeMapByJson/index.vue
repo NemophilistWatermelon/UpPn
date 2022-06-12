@@ -33,6 +33,10 @@
                 '批量撒点代码': async (args) => {
                     const file = await (await globFile['./_showGraphicsByDataJson.js'])()
                     return await file.default(args)
+                },
+                '查询某个图层并显示': async (args) => {
+                    const file = await (await globFile['./_showGraphicsByLayerConditions.js'])()
+                    return await file.default(args)
                 }
             }
 
