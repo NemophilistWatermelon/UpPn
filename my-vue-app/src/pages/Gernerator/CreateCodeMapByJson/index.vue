@@ -94,4 +94,17 @@
         flex-basis: 50%;
     }
 }
+@media screen and (max-width: 759px) {
+   .flex-wrap {
+    display: unset;
+    margin: 20px;
+    gap: 10px;
+    justify-content: unset;
+    align-items: unset;
+    .editor {
+        width: 100vw;
+        height: 40vh;
+    }
+} 
+}
 </style>

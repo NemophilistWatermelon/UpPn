@@ -13,14 +13,6 @@ export default defineComponent({
                     name: "Project",
                     path: "/project"
                 },
-                {
-                    name: "双拼",
-                    path: "/udpn"
-                },
-                {
-                    name: "Gernarator",
-                    path: "/Gernerator"
-                }
             ]
         });
         return {

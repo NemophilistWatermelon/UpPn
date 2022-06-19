@@ -59,7 +59,7 @@ const Projects = reactive({
         {
           icon: Blog,
           name: '杂货铺',
-          desc: '基于 Vue-Press 抒写的个人博文',
+          desc: '基于 Vue-Press 抒写的个人博文(坚持更新)',
           url: 'https://self-blog-five.vercel.app/'
         }
       ]
