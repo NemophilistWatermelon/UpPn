@@ -18,8 +18,8 @@ const Layout = () => import('@/layout/index.vue')
 var routes = [
   {
     path: '/',
-    component: Layout,
     redirect: '/index',
+    component: Layout,
     children: [
       {
         path: '/index',

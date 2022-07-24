@@ -3,33 +3,34 @@
 
     <div class="row-log-container" v-if="logInputsArr.length">
       <template :key='index' v-for="(item, index) in logInputsArr">
-        <div class="history">
-          <div class="left">[$:root] </div>
+        <!--        普通命令历史 输出的日志-->
+        <div class="history" v-if="item.runCommoand">
+          <div class="left no-select">[$:root] </div>
           <div class="right">{{ item.runCommoand }}</div>
         </div>
         <div  class="log-item">
           <div class="sub-wrap">
             <component
+                  v-if="item.runStatus"
                 :is="item.runStatus === 'success' ? SuccessLog : ErrorLog"
-                :info="item.runLog"
+                :info="item.info"
             />
           </div>
         </div>
-      </template>
-    </div>
 
-    <div class="row-log-container" v-if="historyLog.runLog.length">
-      <template :key='index' v-for="(item, index) in historyLog.runLog">
-        <div class="log">
+<!--        history 输出的日志-->
+        <template :key='index' v-for="(history, index) in item.runHistoryLog">
+          <div class="log">
             <div class="logItem">
-              {{ item.commondItem }}
+              {{ history.commondItem }}
             </div>
-        </div>
+          </div>
+        </template>
       </template>
     </div>
 
     <div class="row-input">
-      <span class="position">[$:root]</span>
+      <span class="position no-select">[$:root]</span>
       <input
           v-model="onInput"
           @keydown="onInputKeyPress"
@@ -44,7 +45,7 @@
 <script>
 import SuccessLog from "./compo/Success.vue";
 import ErrorLog from "./compo/Error.vue";
-import TerminalService from '../../Service/Terminal'
+import TerminalService from '../../Service/Terminal/Terminal'
 const terminal = TerminalService.instance()
 export default {
   name: "index.vue",
@@ -58,7 +59,7 @@ export default {
       logInputsArr: [],
       historyInputsArray: [],
       historyLog: {
-        runLog: []
+        runHistoryLog: []
       },
     }
   },
@@ -70,21 +71,47 @@ export default {
   methods: {
     // 注册一些基础的命令
     onBaseRegisCommond() {
+      // 注册命令 clear
       terminal.regisCommondMap('clear', {
         alias: ['cl', 'cls']
       },_ => {
         this.logInputsArr = []
       })
-      terminal.regisCommondMap('history', {
-        alias: ['hs', 'his']
+
+      terminal.regisCommondMap('info', {
+        alias: ['i']
       },_ => {
+        return  {
+          status: 'success',
+          info: 'Autor: QinKai'
+        }
+      })
+
+      // 注册命令 history
+      terminal.regisCommondMap('history', {
+        alias: ['hs', 'his'],
+        option: {
+          '-l': function() {
+            return {
+              info: '真牛逼'
+            }
+          }
+        },
+      },_ => {
+        var a = []
         terminal.getHistory().forEach(item => {
-          console.log({item})
-          this.historyLog.runLog.push({
+          a.push({
             commondItem: item
           })
         })
-        console.log(this.historyLog, 'history')
+
+
+        this.logInputsArr.push({
+          runCommoand: this.onInput,
+          runHistoryLog:a
+        })
+
+        console.log(this.logInputsArr)
       })
     },
 
@@ -121,23 +148,17 @@ export default {
     async onEnterInput() {
       try {
         var data = await this.onCommandRun(this.onInput)
-        this.onGoPageLast()
-        console.log(data)
-        this.logInputsArr.push({
-          runCommoand: this.onInput,
-          runLog: data.log,
-          runStatus: data.status,
-        })
       } catch (e) {
         console.log(e)
         this.logInputsArr.push({
-          runCommoand: this.onInput,
-          runLog: e.log,
+          runCommoand: e.runCommoand,
+          info: e.info,
           runStatus: e.status,
+          runHistoryLog: []
         })
       } finally {
+        this.onGoPageLast()
         this.onInput = ''
-        console.log(this.historyInputsArray)
       }
 
     },
@@ -158,11 +179,9 @@ export default {
 
 <style scoped lang="scss">
 .container {
-  outline: 1px solid;
   width: 100vw;
   height: calc(100vh - 140px);
   overflow: scroll;
-
 
   .row-input {
     display: flex;
@@ -170,10 +189,6 @@ export default {
     padding: 10px;
     .position, .terminal-input {
       color: var(--half-gray-128);
-    }
-
-    .position {
-
     }
 
     .terminal-input {
@@ -193,8 +208,8 @@ export default {
       color: var(--half-gray-128)
     }
     margin-top: 10px;
-
     padding: 10px;
+
     .history, .sub-wrap {
       display: flex;
       align-items: center;
@@ -202,6 +217,7 @@ export default {
       .left {
         margin-right: 10px;
       }
+
     }
 
     .sub-wrap {
@@ -210,8 +226,8 @@ export default {
     }
 
   }
-
-
-
+}
+.no-select {
+  user-select: none;
 }
 </style>
