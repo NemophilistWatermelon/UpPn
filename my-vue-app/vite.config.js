@@ -23,6 +23,6 @@ export default defineConfig({
     }
   },
   build:{
-    outDir: 'dist',//Specify the output directory (relative to project root).
+    outDir: 'Self',//Specify the output directory (relative to project root).
   }
 })

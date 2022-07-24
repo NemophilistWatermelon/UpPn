@@ -10,7 +10,8 @@ import Blog from './Blog'
 import Project from './Project' 
 // Gernerator 路由
 import Gernerator from './Gernerator' 
-
+// 命令行 路由
+import Terminal from './Teminal'
 
 const Layout = () => import('@/layout/index.vue')
 
@@ -32,6 +33,7 @@ var routes = [
       Blog,
       Project,
       Gernerator,
+      Terminal,
       {
         path: '/posts/:md*',
         component: () => import('@/pages/Blog/template.vue'),
