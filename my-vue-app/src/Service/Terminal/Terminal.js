@@ -70,7 +70,7 @@ class Terminal {
                     })
                     // key: -p    value: val
                     if (currentCommand[index]) {
-                        terminalOutput = currentCommand[index]()
+                        terminalOutput = currentCommand[index](item || '')
                     }
                 })
             } else {

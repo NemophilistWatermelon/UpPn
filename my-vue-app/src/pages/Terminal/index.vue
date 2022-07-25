@@ -26,6 +26,9 @@
             </div>
           </div>
         </template>
+
+<!--        template music-->
+        <component v-if="item.MusicPlay" :is="Music"></component>
       </template>
     </div>
 
@@ -45,8 +48,11 @@
 <script>
 import SuccessLog from "./compo/Success.vue";
 import ErrorLog from "./compo/Error.vue";
+import Music from './compo/Music.vue'
 import TerminalService from '../../Service/Terminal/Terminal'
+import Api from './config/Api.js'
 const terminal = TerminalService.instance()
+
 export default {
   name: "index.vue",
 
@@ -56,6 +62,7 @@ export default {
       onInput,
       ErrorLog,
       SuccessLog,
+      Music,
       logInputsArr: [],
       historyInputsArray: [],
       historyLog: {
@@ -71,6 +78,27 @@ export default {
   methods: {
     // 注册一些基础的命令
     onBaseRegisCommond() {
+      // 网易云音乐
+      terminal.regisCommondMap('net', {
+      },_ => {
+        this.logInputsArr.push({
+          runCommoand: this.onInput,
+          MusicPlay: true
+        })
+      })
+
+      // 注册命令 Bing 搜索
+      terminal.regisCommondMap('bing', {
+        alias: ['b', 'bi'],
+        option: {
+          '-s': function(args) {
+            window.open(Api.Bing + '?q=' + args)
+          }
+        }
+      },_ => {
+        return {}
+      })
+
       // 注册命令 clear
       terminal.regisCommondMap('clear', {
         alias: ['cl', 'cls']
