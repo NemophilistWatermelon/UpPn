@@ -5,6 +5,9 @@
  */
 const Bing = 'https://cn.bing.com/search'
 
+const Net163Search = 'http://cloud-music.pl-fe.cn/search?keywords='
+
 export default {
-    Bing
+    Bing,
+    Net163Search
 }

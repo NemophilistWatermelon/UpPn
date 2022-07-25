@@ -27,8 +27,11 @@
           </div>
         </template>
 
-<!--        template music-->
-        <component v-if="item.MusicPlay" :is="Music"></component>
+<!--       music list 音乐列表-->
+        <component v-if="item.musicList"
+                   :is='MusicList'
+                   :searchMusicList="item.musicList">
+        </component>
       </template>
     </div>
 
@@ -48,10 +51,12 @@
 <script>
 import SuccessLog from "./compo/Success.vue";
 import ErrorLog from "./compo/Error.vue";
-import Music from './compo/Music.vue'
+import MusicList from './compo/MusicList.vue'
 import TerminalService from '../../Service/Terminal/Terminal'
+import MusicService from '../../Service/MusicService/index'
 import Api from './config/Api.js'
 const terminal = TerminalService.instance()
+const musicService = MusicService.instance()
 
 export default {
   name: "index.vue",
@@ -62,7 +67,7 @@ export default {
       onInput,
       ErrorLog,
       SuccessLog,
-      Music,
+      MusicList,
       logInputsArr: [],
       historyInputsArray: [],
       historyLog: {
@@ -80,6 +85,30 @@ export default {
     onBaseRegisCommond() {
       // 网易云音乐
       terminal.regisCommondMap('net', {
+        option: {
+          '-s': (args) => {
+            console.log(args, '关键词')
+            musicService.fetchMusicList(args, async (data, error) => {
+              if (data) {
+                const d = await data.json()
+                var o = terminal.runCommondSuccess('net - s' + args, {
+                  info: '获取列表成功'
+                })
+                var oMusicList = Object.assign({}, o,{
+                  musicList: d?.result?.songs || []
+                })
+                console.log({
+                  oMusicList: this.logInputsArr
+                })
+                this.logInputsArr.push(oMusicList)
+                return
+              }
+              if (error) {
+                this.logInputsArr.push(terminal.runCommondError('net - s' + args))
+              }
+            })
+          }
+        },
       },_ => {
         this.logInputsArr.push({
           runCommoand: this.onInput,
