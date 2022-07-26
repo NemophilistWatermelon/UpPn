@@ -5,7 +5,7 @@
  */
 const Bing = 'https://cn.bing.com/search'
 
-const Net163Search = '//cloud-music.pl-fe.cn/search?keywords='
+const Net163Search = 'https://netease-cloud-music-api-lemon-omega.vercel.app/search?keywords='
 
 export default {
     Bing,
