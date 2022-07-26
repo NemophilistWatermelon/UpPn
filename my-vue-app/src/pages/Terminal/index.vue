@@ -5,7 +5,7 @@
       <template :key='index' v-for="(item, index) in logInputsArr">
         <!--        普通命令历史 输出的日志-->
         <div class="history" v-if="item.runCommoand">
-          <div class="left no-select">[$:root] </div>
+          <div class="left no-select">~</div>
           <div class="right">{{ item.runCommoand }}</div>
         </div>
         <div  class="log-item">
@@ -32,11 +32,19 @@
                    :is='MusicList'
                    :searchMusicList="item.musicList">
         </component>
+
+        <!--       说明书组件-->
+        <component v-if="item.help"
+                   :is='ReadMe'
+                   :oHelpData="item.help"
+        >
+        </component>
       </template>
     </div>
 
     <div class="row-input">
-      <span class="position no-select">[$:root]</span>
+      <span class="position no-select green">~</span>
+      <span class="mk-hk">:</span>
       <input
           v-model="onInput"
           @keydown="onInputKeyPress"
@@ -49,14 +57,29 @@
 </template>
 
 <script>
+import ReadMe from './compo/ReadMe.vue'
+// 正确调用命令组件
 import SuccessLog from "./compo/Success.vue";
+// 错误调用命令组件
 import ErrorLog from "./compo/Error.vue";
+// 音乐列表组件
 import MusicList from './compo/MusicList.vue'
+// 命令行服务
 import TerminalService from '../../Service/Terminal/Terminal'
+// 音乐服务
 import MusicService from '../../Service/MusicService/index'
+// 注册全局键盘事件
+import GlobalKeyService from '../../Service/Terminal/RegisGlobalKey'
+// 说明书服务
+import ReadMeService from '../../Service/Terminal/Readme'
+
+// 调用 API
 import Api from './config/Api.js'
+// 实例化服务
 const terminal = TerminalService.instance()
 const musicService = MusicService.instance()
+const globalKeyService = GlobalKeyService.instance()
+const readMeService = ReadMeService.instance()
 
 export default {
   name: "index.vue",
@@ -64,6 +87,7 @@ export default {
   data() {
     let onInput = ''
     return {
+      ReadMe,
       onInput,
       ErrorLog,
       SuccessLog,
@@ -73,18 +97,73 @@ export default {
       historyLog: {
         runHistoryLog: []
       },
+      SYSTEM_KEY_MAP: {}
     }
   },
 
   mounted() {
     this.onBaseRegisCommond()
+    this.onListenSystemKey()
+    this.initSystemKeyBind()
   },
 
   methods: {
+    initSystemKeyBind() {
+      globalKeyService.onRegisKey('Control+h', {
+        desc: '老板键'
+      },() => {
+        console.log('run')
+        terminal.runCommondBy('cls', (res, err) => {
+          console.log({
+            res
+          })
+          if (res) {
+            this.logInputsArr = []
+          }
+        })
+      })
+    },
+
+    // 注册系统全局的快捷键
+    onListenSystemKey() {
+
+
+    },
+
     // 注册一些基础的命令
     onBaseRegisCommond() {
+      terminal.regisCommondMap('help', {
+        desc: '查看帮助'
+      },_ => {
+        const result = readMeService.getHelp({
+          service: {
+            terminal,
+            globalKeyService
+          }
+        })
+        console.log(result)
+        var data = {
+          fastKey: {},
+          command: {}
+        }
+        result.regisKey.forEach((item, index) => {
+          data.fastKey[index] = item.desc || ''
+        })
+        result.terminalCommand.forEach((item, index) => {
+          data.command[index] = item.desc || ''
+        })
+        console.log(data)
+        this.logInputsArr.push({
+          runCommoand: this.onInput,
+          help: {
+            data
+          }
+        })
+      })
+
       // 网易云音乐
       terminal.regisCommondMap('net', {
+        desc: '网易云音乐帮助键',
         option: {
           '-s': (args) => {
             console.log(args, '关键词')
@@ -98,7 +177,7 @@ export default {
                   musicList: d?.result?.songs || []
                 })
                 console.log({
-                  oMusicList: this.logInputsArr
+                  oMusicList: oMusicList
                 })
                 this.logInputsArr.push(oMusicList)
                 return
@@ -118,6 +197,7 @@ export default {
 
       // 注册命令 Bing 搜索
       terminal.regisCommondMap('bing', {
+        desc: '必应搜索键',
         alias: ['b', 'bi'],
         option: {
           '-s': function(args) {
@@ -136,7 +216,8 @@ export default {
       })
 
       terminal.regisCommondMap('info', {
-        alias: ['i']
+        alias: ['i'],
+        desc: '开发者信息命令',
       },_ => {
         return  {
           status: 'success',
@@ -147,6 +228,7 @@ export default {
       // 注册命令 history
       terminal.regisCommondMap('history', {
         alias: ['hs', 'his'],
+        desc: '查看历史信息命令',
         option: {
           '-l': function() {
             return {
@@ -205,6 +287,7 @@ export default {
     async onEnterInput() {
       try {
         var data = await this.onCommandRun(this.onInput)
+
       } catch (e) {
         console.log(e)
         this.logInputsArr.push({
@@ -244,7 +327,16 @@ export default {
     display: flex;
     align-items: center;
     padding: 10px;
-    .position, .terminal-input {
+
+    .position.green {
+      color: #09e309;
+    }
+
+    .mk-hk {
+      margin-left: 8px;
+      display: none;
+    }
+    .position, .terminal-input, .mk-hk {
       color: var(--half-gray-128);
     }
 

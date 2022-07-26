@@ -2,7 +2,9 @@
 <div class="music-list">
   <template v-for="(item, index) in searchMusicList">
     <div class="song-item" >
-      <div class="name" @click="onPlay(item)">{{ item.name }}</div>
+      <div class="name" @click="onPlay(item)">
+        {{ item.name }}: <span>{{ MusicSinger(item.artists) }}</span>
+      </div>
       <!--        template music-->
       <component :musicId="item.id" v-if="item.MusicPlay" :is="Music"></component>
     </div>
@@ -29,8 +31,16 @@ export default {
   },
 
   methods: {
+    MusicSinger(arr) {
+      if (arr.length) {
+        return arr[0].name
+      }
+      return ''
+    },
+
     onPlay(arg) {
       this.searchMusicList.forEach(item => {
+        item.MusicPlay = false
         if (item.id === arg.id) {
           item.MusicPlay = true
         }

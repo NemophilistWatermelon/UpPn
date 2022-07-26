@@ -27,11 +27,17 @@ class Terminal {
             for (const commondKey in options) {
                 // 设置子命令
                 this.commonMap.set(commond, {
-                    [commondKey]: options[commondKey]
+                    [commondKey]: options[commondKey],
                 })
             }
             var m = this.commonMap.get(commond)
             m.func = func
+            this.commonMap.set(commond, m)
+        }
+
+        if (config.desc) {
+            var m = this.commonMap.get(commond)
+            m.desc = config.desc
             this.commonMap.set(commond, m)
         }
         console.log(this.commonMap, '注册')
@@ -96,8 +102,11 @@ class Terminal {
     }
 
     runCommondSuccess(commond, terminalOutput) {
+        console.log({
+            run: commond
+        })
         return Object.assign({},{
-            runCommoand: commond,
+            runCommoand: commond.start || commond,
             status: 'success',
             info: '运行成功'
         }, terminalOutput)
@@ -142,7 +151,12 @@ class Terminal {
         return oCommondMap
     }
 
+    getBindCommand() {
+        return this.commonMap
+    }
 }
+
+
 
 
 export default Terminal
