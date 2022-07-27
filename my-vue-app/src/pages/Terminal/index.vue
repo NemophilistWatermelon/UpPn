@@ -8,7 +8,7 @@
           <div class="left no-select">~</div>
           <div class="right">{{ item.runCommoand }}</div>
         </div>
-        <div  class="log-item">
+        <div  class="log-item" v-if="item.runStatus !== 'any'">
           <div class="sub-wrap">
             <component
                   v-if="item.runStatus"
@@ -43,9 +43,10 @@
     </div>
 
     <div class="row-input">
-      <span class="position no-select green">~</span>
+      <span class="position no-select green">️~</span>
       <span class="mk-hk">:</span>
       <input
+          ref="inputRef"
           v-model="onInput"
           @keydown="onInputKeyPress"
           autofocus
@@ -64,23 +65,15 @@ import SuccessLog from "./compo/Success.vue";
 import ErrorLog from "./compo/Error.vue";
 // 音乐列表组件
 import MusicList from './compo/MusicList.vue'
-// 命令行服务
-import TerminalService from '../../Service/Terminal/Terminal'
 // 音乐服务
 import MusicService from '../../Service/MusicService/index'
-// 注册全局键盘事件
-import GlobalKeyService from '../../Service/Terminal/RegisGlobalKey'
-// 说明书服务
-import ReadMeService from '../../Service/Terminal/Readme'
-
+// 主服务
+import Service from '../../Service/Terminal/index'
 // 调用 API
 import Api from './config/Api.js'
 // 实例化服务
-const terminal = TerminalService.instance()
 const musicService = MusicService.instance()
-const globalKeyService = GlobalKeyService.instance()
-const readMeService = ReadMeService.instance()
-
+const service = Service.instance({})
 export default {
   name: "index.vue",
 
@@ -102,158 +95,207 @@ export default {
   },
 
   mounted() {
-    this.onBaseRegisCommond()
-    this.onListenSystemKey()
     this.initSystemKeyBind()
+    this.onBaseRegisCommond()
   },
 
   methods: {
     initSystemKeyBind() {
-      globalKeyService.onRegisKey('Control+h', {
-        desc: '老板键'
-      },() => {
-        console.log('run')
-        terminal.runCommondBy('cls', (res, err) => {
-          console.log({
-            res
-          })
-          if (res) {
-            this.logInputsArr = []
+      const KeyMap = {
+        '老板键': {
+          key: 'Control+h',
+          config: {
+            desc: '老板键'
+          },
+          func: (miniService) => {
+            const { terminal } = miniService
+            terminal.runCommondBy('cls', (res, err) => {
+              console.log({
+                res
+              })
+              if (res) {
+                this.logInputsArr = []
+              }
+            })
           }
-        })
-      })
-    },
-
-    // 注册系统全局的快捷键
-    onListenSystemKey() {
-
+        },
+        focusInput: {
+          key: 'Control+g',
+          config: {
+            desc: '全局聚焦当前命令输入框'
+          },
+          func: miniService => {
+            this.$refs.inputRef.focus()
+          }
+        },
+      }
+      service.bindKey(KeyMap.老板键.key, KeyMap.老板键.config || {}, KeyMap.老板键.func)
+      service.bindKey(KeyMap.focusInput.key, KeyMap.focusInput.config || {}, KeyMap.focusInput.func)
 
     },
 
     // 注册一些基础的命令
     onBaseRegisCommond() {
-      terminal.regisCommondMap('help', {
-        desc: '查看帮助'
-      },_ => {
-        const result = readMeService.getHelp({
-          service: {
-            terminal,
-            globalKeyService
-          }
-        })
-        console.log(result)
-        var data = {
-          fastKey: {},
-          command: {}
-        }
-        result.regisKey.forEach((item, index) => {
-          data.fastKey[index] = item.desc || ''
-        })
-        result.terminalCommand.forEach((item, index) => {
-          data.command[index] = item.desc || ''
-        })
-        console.log(data)
-        this.logInputsArr.push({
-          runCommoand: this.onInput,
-          help: {
-            data
-          }
-        })
-      })
-
-      // 网易云音乐
-      terminal.regisCommondMap('net', {
-        desc: '网易云音乐帮助键',
-        option: {
-          '-s': (args) => {
-            console.log(args, '关键词')
-            musicService.fetchMusicList(args, async (data, error) => {
-              if (data) {
-                const d = await data.json()
-                var o = terminal.runCommondSuccess('net - s' + args, {
-                  info: '获取列表成功'
-                })
-                var oMusicList = Object.assign({}, o,{
-                  musicList: d?.result?.songs || []
-                })
-                console.log({
-                  oMusicList: oMusicList
-                })
-                this.logInputsArr.push(oMusicList)
-                return
+      const KeyMap = {
+        帮助信息: {
+          key: 'help',
+          config: {
+            desc: '查看帮助'
+          },
+          func: miniService => {
+            const {readMeService, terminal, globalKeyService} = miniService
+            const result = readMeService.getHelp({
+              service: {
+                terminal,
+                globalKeyService,
               }
-              if (error) {
-                this.logInputsArr.push(terminal.runCommondError('net - s' + args))
+            })
+            console.log(result)
+            var data = {
+              fastKey: {},
+              command: {}
+            }
+            result.regisKey.forEach((item, index) => {
+              data.fastKey[index] = item.desc || ''
+            })
+            result.terminalCommand.forEach((item, index) => {
+              data.command[index] = item.desc || ''
+            })
+            console.log(data)
+            this.logInputsArr.push({
+              runCommoand: this.onInput,
+              help: {
+                data
               }
             })
           }
         },
-      },_ => {
-        this.logInputsArr.push({
-          runCommoand: this.onInput,
-          MusicPlay: true
-        })
-      })
-
-      // 注册命令 Bing 搜索
-      terminal.regisCommondMap('bing', {
-        desc: '必应搜索键',
-        alias: ['b', 'bi'],
-        option: {
-          '-s': function(args) {
-            window.open(Api.Bing + '?q=' + args)
-          }
-        }
-      },_ => {
-        return {}
-      })
-
-      // 注册命令 clear
-      terminal.regisCommondMap('clear', {
-        alias: ['cl', 'cls']
-      },_ => {
-        this.logInputsArr = []
-      })
-
-      terminal.regisCommondMap('info', {
-        alias: ['i'],
-        desc: '开发者信息命令',
-      },_ => {
-        return  {
-          status: 'success',
-          info: 'Autor: QinKai'
-        }
-      })
-
-      // 注册命令 history
-      terminal.regisCommondMap('history', {
-        alias: ['hs', 'his'],
-        desc: '查看历史信息命令',
-        option: {
-          '-l': function() {
-            return {
-              info: '真牛逼'
-            }
+        网易云音乐: {
+          key: 'net',
+          config: {
+            desc: '网易云音乐帮助键',
+            option: {
+              '-s': (args) => {
+                console.log(args, '关键词')
+                musicService.fetchMusicList(args, async (data, error) => {
+                  if (data) {
+                    const d = await data.json()
+                    var o = terminal.runCommondSuccess('net - s' + args, {
+                      info: '获取列表成功'
+                    })
+                    var oMusicList = Object.assign({}, o, {
+                      musicList: d?.result?.songs || []
+                    })
+                    console.log({
+                      oMusicList: oMusicList
+                    })
+                    this.logInputsArr.push(oMusicList)
+                    return
+                  }
+                  if (error) {
+                    this.logInputsArr.push(terminal.runCommondError('net - s' + args))
+                  }
+                })
+              }
+            },
+          },
+          func: miniService => {
+            this.logInputsArr.push({
+              runCommoand: this.onInput,
+              MusicPlay: true
+            })
           }
         },
-      },_ => {
-        var a = []
-        terminal.getHistory().forEach(item => {
-          a.push({
-            commondItem: item
-          })
-        })
+        bing搜索: {
+          key: 'bing',
+          config: {
+            desc: '必应搜索键',
+            alias: ['b', 'bi'],
+            option: {
+              '-s': function (args) {
+                window.open(Api.Bing + '?q=' + args)
+              }
+            }
+          },
+          func: miniService => ({})
+        },
+        清除: {
+          key: 'clear',
+          config: {
+            alias: ['cl', 'cls']
+          },
+          func: miniService => {
+            this.logInputsArr = []
+          }
+        },
+        开发者信息: {
+          key: 'info',
+          config: {
+            desc: '开发者信息命令',
+          },
+          func: miniService => {
+            this.logInputsArr.push({
+              runStatus: 'success',
+              runCommoand: this.onInput,
+              info: 'Autor: QinKai'
+            })
+          }
+        },
+        查看历史: {
+          key: 'history',
+          config: {
+            alias: ['hs', 'his'],
+            desc: '查看历史信息命令',
+            option: {
+              '-l':  () => {
+                this.logInputsArr.push({
+                  runStatus: 'success',
+                  runCommoand: this.onInput,
+                  info: '真牛逼'
+                })
+              }
+            },
+          },
+          func: miniService => {
+            const {terminal} = miniService
+            var a = []
+            terminal.getHistory().forEach(item => {
+              a.push({
+                commondItem: item
+              })
+            })
+
+            this.logInputsArr.push({
+              runCommoand: this.onInput,
+              runHistoryLog: a
+            })
+            console.log(this.logInputsArr)
+          }
+        },
+        查看日期: {
+          key: 'date',
+          config: {},
+          func: miniService => {
+            const { terminal } = miniService
+            let date = terminal.getDate()
+            this.logInputsArr.push({
+              runCommoand: this.onInput,
+              info: date,
+              runStatus: 'success'
+            })
+          }
+        }
+      }
+      service.bindCommond(KeyMap.帮助信息.key, KeyMap.帮助信息.config || {}, KeyMap.帮助信息.func)
+      service.bindCommond(KeyMap.网易云音乐.key, KeyMap.网易云音乐.config || {}, KeyMap.网易云音乐.func)
+      service.bindCommond(KeyMap.bing搜索.key, KeyMap.bing搜索.config || {}, KeyMap.bing搜索.func)
+      service.bindCommond(KeyMap.清除.key, KeyMap.清除.config || {}, KeyMap.清除.func)
+      service.bindCommond(KeyMap.开发者信息.key, KeyMap.开发者信息.config || {}, KeyMap.开发者信息.func)
+      service.bindCommond(KeyMap.查看历史.key, KeyMap.查看历史.config || {}, KeyMap.查看历史.func)
+      service.bindCommond(KeyMap.查看日期.key, KeyMap.查看日期.config || {}, KeyMap.查看日期.func)
 
 
-        this.logInputsArr.push({
-          runCommoand: this.onInput,
-          runHistoryLog:a
-        })
-
-        console.log(this.logInputsArr)
-      })
     },
-
 
     onRegisCommon() {
 
@@ -274,7 +316,7 @@ export default {
 
     onCommandRun(commond) {
       return new Promise((resolve, reject) => {
-        terminal.runCommondBy(commond, function(result) {
+        service.runCommond(commond, function(result) {
           if (result.status === 'success') {
             resolve(result)
           } else {
@@ -286,6 +328,13 @@ export default {
 
     async onEnterInput() {
       try {
+        if (!this.onInput) {
+          this.logInputsArr.push({
+            runCommoand: '~',
+            runStatus: 'any'
+          })
+          return
+        }
         var data = await this.onCommandRun(this.onInput)
 
       } catch (e) {

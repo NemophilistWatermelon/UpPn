@@ -1,5 +1,4 @@
-import RegisGlobalKey from "./RegisGlobalKey";
-import Terminal from "./Terminal";
+
 class ReadMe {
     constructor(o) {
         this.o = o
@@ -12,7 +11,7 @@ class ReadMe {
 
     init(service) {
         const regisKey = service.globalKeyService.getBindKeys()
-        const terminalCommand = service .terminal.getBindCommand()
+        const terminalCommand = service.terminal.getBindCommand()
 
         this.helpCommand = {
             regisKey,

@@ -1,3 +1,4 @@
+import DateCustome from './Date'
 class Terminal {
     constructor() {
         // 注册命令行执行方法
@@ -6,10 +7,18 @@ class Terminal {
         this.historyCommondList = []
         // 记录命令行的 log 输出
         this.teminalLogMap = new Map()
+        
+        this.terminalDate = this.installService(DateCustome, 'currentDate')
+
     }
 
     static instance(o) {
         return new this(o)
+    }
+
+    installService(service, func) {
+        const s = service.instance()
+        return s[func]()
     }
 
     regisCommondMap(commond, config, func) {
@@ -153,6 +162,10 @@ class Terminal {
 
     getBindCommand() {
         return this.commonMap
+    }
+
+    getDate() {
+        return this.terminalDate
     }
 }
 

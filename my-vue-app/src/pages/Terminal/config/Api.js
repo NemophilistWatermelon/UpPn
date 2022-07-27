@@ -9,5 +9,5 @@ const Net163Search = 'https://netease-cloud-music-api-lemon-omega.vercel.app/sea
 
 export default {
     Bing,
-    Net163Search
+    Net163Search,
 }

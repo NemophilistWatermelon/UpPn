@@ -14,6 +14,7 @@ specifiers:
   eslint-plugin-vue: ^8.2.0
   i: ^0.3.7
   markdown-it: ^13.0.0
+  moment: ^2.29.4
   monaco-editor: ^0.33.0
   nprogress: ^0.2.0
   prettier: ^2.5.1
@@ -44,6 +45,7 @@ dependencies:
   eslint-plugin-vue: 8.2.0_eslint@8.6.0
   i: 0.3.7
   markdown-it: 13.0.0
+  moment: 2.29.4
   monaco-editor: 0.33.0
   nprogress: 0.2.0
   prettier: 2.5.1
@@ -1638,6 +1640,10 @@ packages:
     dependencies:
       brace-expansion: 2.0.1
     dev: true
+
+  /moment/2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
+    dev: false
 
   /monaco-editor/0.33.0:
     resolution: {integrity: sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==}
