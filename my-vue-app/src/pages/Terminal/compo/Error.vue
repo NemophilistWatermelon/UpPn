@@ -1,7 +1,7 @@
 <template>
   <div class="error-info">
     <div class="tag">
-      <Tag status="error" info="命令调取失败"/>
+      <Tag status="error" info="🥺"/>
     </div>
     <div class="info">
       {{ info }}

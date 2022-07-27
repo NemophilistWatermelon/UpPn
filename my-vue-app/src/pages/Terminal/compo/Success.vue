@@ -1,7 +1,7 @@
 <template>
   <div class="success-info">
     <div class="tag">
-      <Tag status="success" info="命令调取成功"/>
+      <Tag status="success" info="🤓 Bingo!"/>
     </div>
     <div class="info">
       {{ info }}

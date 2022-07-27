@@ -27,22 +27,16 @@ $error-color: #ff7979;
 $common-color: #5e0202;
 
 .tagPadding {
-  padding: 2px;
-  border-radius: 3px;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .success {
   color: $common-color;
-  background-color: $success-color;
-  outline: 1px solid $success-color;
   @extend .tagPadding;
 }
 
 .error {
   color: $common-color;
-  background-color: $error-color;
-  outline: 1px solid $error-color;
   @extend .tagPadding;
 }
 
