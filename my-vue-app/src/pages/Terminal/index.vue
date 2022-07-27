@@ -8,17 +8,17 @@
           <div class="left no-select">~</div>
           <div class="right">{{ item.runCommoand }}</div>
         </div>
-        <div  class="log-item" v-if="item.runStatus !== 'any'">
+        <div class="log-item" v-if="item.runStatus !== 'any'">
           <div class="sub-wrap">
             <component
-                  v-if="item.runStatus"
+                v-if="item.runStatus"
                 :is="item.runStatus === 'success' ? SuccessLog : ErrorLog"
                 :info="item.info"
             />
           </div>
         </div>
 
-<!--        history 输出的日志-->
+        <!--        history 输出的日志-->
         <template :key='index' v-for="(history, index) in item.runHistoryLog">
           <div class="log">
             <div class="logItem">
@@ -27,7 +27,7 @@
           </div>
         </template>
 
-<!--       music list 音乐列表-->
+        <!--       music list 音乐列表-->
         <component v-if="item.musicList"
                    :is='MusicList'
                    :searchMusicList="item.musicList">
@@ -108,7 +108,7 @@ export default {
             desc: '老板键'
           },
           func: (miniService) => {
-            const { terminal } = miniService
+            const {terminal} = miniService
             terminal.runCommondBy('cls', (res, err) => {
               console.log({
                 res
@@ -180,10 +180,13 @@ export default {
                 musicService.fetchMusicList(args, async (data, error) => {
                   if (data) {
                     const d = await data.json()
-                    var o = terminal.runCommondSuccess('net - s' + args, {
-                      info: '获取列表成功'
-                    })
-                    var oMusicList = Object.assign({}, o, {
+                    // var o = terminal.runCommondSuccess('net - s' + args, {
+                    //   info: '获取列表成功'
+                    // })
+                    var oMusicList = Object.assign({}, {
+                      runCommoand: 'net -s ' + args,
+                      runStatus: 'success'
+                    }, {
                       musicList: d?.result?.songs || []
                     })
                     console.log({
@@ -247,7 +250,7 @@ export default {
             alias: ['hs', 'his'],
             desc: '查看历史信息命令',
             option: {
-              '-l':  () => {
+              '-l': () => {
                 this.logInputsArr.push({
                   runStatus: 'success',
                   runCommoand: this.onInput,
@@ -276,7 +279,7 @@ export default {
           key: 'date',
           config: {},
           func: miniService => {
-            const { terminal } = miniService
+            const {terminal} = miniService
             let date = terminal.getDate()
             this.logInputsArr.push({
               runCommoand: this.onInput,
@@ -316,7 +319,7 @@ export default {
 
     onCommandRun(commond) {
       return new Promise((resolve, reject) => {
-        service.runCommond(commond, function(result) {
+        service.runCommond(commond, function (result) {
           if (result.status === 'success') {
             resolve(result)
           } else {
@@ -356,7 +359,7 @@ export default {
       let key = ev.key
       console.log('press', ev)
       switch (key) {
-        // 按下回车键
+          // 按下回车键
         case 'Enter':
           this.onEnterInput()
           break
@@ -385,6 +388,7 @@ export default {
       margin-left: 8px;
       display: none;
     }
+
     .position, .terminal-input, .mk-hk {
       color: var(--half-gray-128);
     }
@@ -405,6 +409,7 @@ export default {
     * {
       color: var(--half-gray-128)
     }
+
     margin-top: 10px;
     padding: 10px;
 
@@ -425,6 +430,7 @@ export default {
 
   }
 }
+
 .no-select {
   user-select: none;
 }
