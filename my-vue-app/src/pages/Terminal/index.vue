@@ -33,6 +33,12 @@
                    :searchMusicList="item.musicList">
         </component>
 
+        <!--      video list 短视频列表-->
+        <component v-if="item.videoList"
+                   :is='MicroVideoList'
+                   :videoList="item.videoList">
+        </component>
+
         <!--       说明书组件-->
         <component v-if="item.help"
                    :is='ReadMe'
@@ -65,14 +71,19 @@ import SuccessLog from "./compo/Success.vue";
 import ErrorLog from "./compo/Error.vue";
 // 音乐列表组件
 import MusicList from './compo/MusicList.vue'
+import MicroVideoList from './compo/MicroVideo.vue'
 // 音乐服务
 import MusicService from '../../Service/MusicService/index'
 // 主服务
 import Service from '../../Service/Terminal/index'
+// 短视频服务
+import MicroVideo from '../../Service/MicroVideo/index'
+
 // 调用 API
 import Api from './config/Api.js'
 // 实例化服务
 const musicService = MusicService.instance()
+const microVideo = MicroVideo.instance()
 const service = Service.instance({})
 export default {
   name: "index.vue",
@@ -80,6 +91,7 @@ export default {
   data() {
     let onInput = ''
     return {
+      MicroVideoList,
       ReadMe,
       onInput,
       ErrorLog,
@@ -232,6 +244,46 @@ export default {
             })
           }
         },
+        短视频: {
+          key: 'vd',
+          config: {
+            desc: '短视频命令',
+            option: {
+              '-n': (args) => {
+                console.log(args, '数量')
+                microVideo.fetchVideoList(Api.smallVideo, {
+                  page: 0,
+                  size: args
+                }, async (data, error) => {
+                  if (data) {
+                    const d = await data.json()
+                    // var o = terminal.runCommondSuccess('net - s' + args, {
+                    //   info: '获取列表成功'
+                    // })
+                    var oVideoList = Object.assign({}, {
+                      runCommoand: 'vd -n ' + args,
+                      runStatus: 'success'
+                    }, {
+                      videoList: d?.result?.list || []
+                    })
+
+                    this.logInputsArr.push(oVideoList)
+                    return
+                  }
+                  if (error) {
+                    this.logInputsArr.push(terminal.runCommondError('vd -n' + args))
+                  }
+                })
+              }
+            },
+          },
+          func: miniService => {
+            this.logInputsArr.push({
+              runCommoand: this.onInput,
+              MusicPlay: true
+            })
+          }
+        },
         bing搜索: {
           key: 'bing',
           config: {
@@ -319,6 +371,7 @@ export default {
       service.bindCommond(KeyMap.开发者信息.key, KeyMap.开发者信息.config || {}, KeyMap.开发者信息.func)
       service.bindCommond(KeyMap.查看历史.key, KeyMap.查看历史.config || {}, KeyMap.查看历史.func)
       service.bindCommond(KeyMap.查看日期.key, KeyMap.查看日期.config || {}, KeyMap.查看日期.func)
+      service.bindCommond(KeyMap.短视频.key, KeyMap.短视频.config || {}, KeyMap.短视频.func)
 
 
     },
