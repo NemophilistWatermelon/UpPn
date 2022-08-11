@@ -7,7 +7,11 @@ const Bing = 'https://cn.bing.com/search'
 
 const Net163Search = 'https://netease-cloud-music-api-lemon-omega.vercel.app/search?keywords='
 
+// 短视频接口 免费
+const smallVideo = 'https://api.apiopen.top/api/getHaoKanVideo?page=0&size=2'
+
 export default {
     Bing,
     Net163Search,
+    smallVideo,
 }

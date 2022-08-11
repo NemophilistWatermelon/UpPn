@@ -97,9 +97,32 @@ export default {
   mounted() {
     this.initSystemKeyBind()
     this.onBaseRegisCommond()
+    this.initNumber()
   },
 
   methods: {
+    initNumber() { 
+      const num = ''
+      Number.prototype.unoInnerFixed = function (args) { 
+        let result = ''
+
+        if (String(this) !== '') { 
+          let strNumber = String(this)
+
+          if (strNumber.includes('.')) { 
+            let splitNum = strNumber.split('.')
+            let firstNum = splitNum[0]
+            let lastNum = splitNum[1]
+            result = lastNum.substring(0, args)
+            return Number(firstNum + '.' + result)
+          }
+          result = strNumber
+          return Number(result)
+        }
+      }
+
+      const result = Number(num).unoInnerFixed(4)
+    },
     initSystemKeyBind() {
       const KeyMap = {
         '老板键': {

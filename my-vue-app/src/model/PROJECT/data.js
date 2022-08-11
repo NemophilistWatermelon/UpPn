@@ -4,7 +4,7 @@ import Spider from './iconComponent/Spider.vue'
 import Player from './iconComponent/Player.vue'
 import PainStr from './iconComponent/PainStr.vue'
 import Blog from './iconComponent/Blog.vue'
-
+import Terminal from './iconComponent/Terminal.vue'
 
 const Projects = reactive({
   pro: [
@@ -61,6 +61,12 @@ const Projects = reactive({
           name: '杂货铺',
           desc: '基于 Vue-Press 抒写的个人博文(坚持更新)',
           url: 'https://self-blog-five.vercel.app/'
+        },
+        {
+          icon: Terminal,
+          name: 'Terminal',
+          desc: '一个非常 COOL の 终端',
+          url: 'https://self-me.vercel.app/#/terminal'
         }
       ]
     },
