@@ -12,7 +12,8 @@ import Project from './Project'
 import Gernerator from './Gernerator' 
 // 命令行 路由
 import Terminal from './Teminal'
-
+// playground
+import PlayGround from '../playground/echarts.vue'
 const Layout = () => import('@/layout/index.vue')
 
 var routes = [
@@ -37,6 +38,10 @@ var routes = [
       {
         path: '/posts/:md*',
         component: () => import('@/pages/Blog/template.vue'),
+      },
+      {
+        path: '/playground/echarts',
+        component: PlayGround
       }
     ]
   },

@@ -12,6 +12,8 @@
     "bignumber": "^1.1.0",
     "bignumber.js": "^9.0.2",
     "decimal.js": "^10.3.1",
+    "echarts": "^5.3.3",
+    "echarts-gl": "^2.0.9",
     "element-plus": "^2.0.6",
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
