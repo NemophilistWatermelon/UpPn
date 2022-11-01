@@ -5,6 +5,12 @@ const mdPlugin = require('vite-plugin-markdown')
 import path from 'path'
 
 export default defineConfig({
+  server: {
+    host: 'localhost',
+    cors: true,
+    open: true,
+    hmr: true,
+  },
   plugins: [
     vue(),
     AutoImport({ /* options */

@@ -7,14 +7,16 @@ import udpn from './udpn'
 // Blog 路由
 import Blog from './Blog'
 // Project 路由
-import Project from './Project' 
+import Project from './Project'
 // Gernerator 路由
-import Gernerator from './Gernerator' 
+import Gernerator from './Gernerator'
 // 命令行 路由
 import Terminal from './Teminal'
 // playground
 import PlayGround from '../playground/echarts.vue'
 const Layout = () => import('@/layout/index.vue')
+import LineVue from '../playground/Line.vue'
+import Board from './DrawBoard/index'
 
 var routes = [
   {
@@ -32,6 +34,7 @@ var routes = [
       },
       udpn,
       Blog,
+      Board,
       Project,
       Gernerator,
       Terminal,
@@ -42,10 +45,14 @@ var routes = [
       {
         path: '/playground/echarts',
         component: PlayGround
+      },
+      {
+        path: '/playground/line',
+        component: LineVue
       }
     ]
   },
-  
+
 ]
 
 export const router = createRouter({
