@@ -4,3 +4,5 @@
 
 # 在线地址(由于国情，现已被墙)
 [在线地址](https://self-me.vercel.app/#/terminal)
+# 切换新地址 
+[新地址](https://self-udpn.netlify.app/self/#/index)
