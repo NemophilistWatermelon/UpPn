@@ -9,7 +9,7 @@
   readmd(target => {
     mineRef.value = target.html
   })
-  
+
 
 </script>
 <template>
@@ -29,7 +29,7 @@
       margin-top: 2em;
       color: var(--half-gray-128);
     }
-    
+
     a {
       color: var(--md-h1-color);
     }
@@ -52,8 +52,33 @@
     h1 {
       font-size: var(--intro-h1-size);
       color: var(--intro-h1);
+      transform: translateX(0);
+      animation: rightToLeft ease-in-out .6s forwards 2;
     }
   }
-  
+
+}
+
+
+@keyframes rightToLeft {
+  0% {
+    transform: translateX(0)
+  }
+
+  20% {
+    transform: translateX(20px)
+  }
+
+  50% {
+    transform: translateX(0px)
+  }
+
+  70% {
+    transform: translateX(20px)
+  }
+
+  100% {
+    transform: translateX(0px)
+  }
 }
 </style>
