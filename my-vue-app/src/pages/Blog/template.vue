@@ -3,7 +3,7 @@
 import { markdown } from './wordsReducer'
 export default defineComponent({
   name: 'template',
-  
+
   setup() {
     const route = useRoute()
     const str = ref()
@@ -30,10 +30,10 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="template-container max-full" v-html="str">
+  <div class="template-container max-full" v-html="str" v-highlight>
 
   </div>
- 
+
 </template>
 
 
@@ -49,10 +49,10 @@ export default defineComponent({
         color: var(--md-h1-color);
         font-family: var(--md-sytem-font);
       }
-      
+
       li,
       p,
-      h2, 
+      h2,
       h3,
       h4,
       h5,
@@ -68,11 +68,11 @@ export default defineComponent({
         // min-height: 13em;
         color: #fff;
         padding: 5px;
-        background: var(--md-code-bg);
+        //background: var(--md-code-bg);
       }
-    
 
-  
+
+
     }
   }
 </style>

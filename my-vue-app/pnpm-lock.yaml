@@ -14,10 +14,12 @@ specifiers:
   eslint-config-prettier: ^8.3.0
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-vue: ^8.2.0
+  highlight.js: ^11.7.0
   i: ^0.3.7
   markdown-it: ^13.0.0
   moment: ^2.29.4
   monaco-editor: ^0.33.0
+  npm: ^9.4.0
   nprogress: ^0.2.0
   prettier: ^2.5.1
   sass: ^1.50.1
@@ -31,6 +33,7 @@ specifiers:
   vite-plugin-prismjs: ^0.0.8
   vite-plugin-voie: ^0.7.3
   vue: ^3.2.25
+  vue-hljs: ^3.0.1
   vue-router: 4.0.0-beta.13
   vuex: ^4.0.2
 
@@ -47,10 +50,12 @@ dependencies:
   eslint-config-prettier: 8.3.0_eslint@8.6.0
   eslint-plugin-prettier: 4.0.0_drmi6ykcnmp26gebffb7cz4dce
   eslint-plugin-vue: 8.2.0_eslint@8.6.0
+  highlight.js: 11.7.0
   i: 0.3.7
   markdown-it: 13.0.0
   moment: 2.29.4
   monaco-editor: 0.33.0
+  npm: 9.4.0
   nprogress: 0.2.0
   prettier: 2.5.1
   sass: 1.50.1
@@ -61,6 +66,7 @@ dependencies:
   vite-plugin-prismjs: 0.0.8
   vite-plugin-voie: 0.7.3_wfwy6ov4qbj2srzvjgi6poixp4
   vue: 3.2.26
+  vue-hljs: 3.0.1_ddtcwkl4gnhl2kmu3dqyzqs5pe
   vue-router: 4.0.0-beta.13_vue@3.2.26
   vuex: 4.0.2_vue@3.2.26
 
@@ -1410,6 +1416,11 @@ packages:
     dependencies:
       function-bind: 1.1.1
 
+  /highlight.js/11.7.0:
+    resolution: {integrity: sha512-1rRqesRFhMO/PRF+G86evnyJkCgaZFOI+Z6kdj15TA18funfoqJXvgPCLSf0SWq3SRfg1j3HlDs8o4s3EGq1oQ==}
+    engines: {node: '>=12.0.0'}
+    dev: false
+
   /htmlparser2/6.1.0:
     resolution: {integrity: sha512-gyyPk6rgonLFEDGoeRgQNaEUvdJ4ktTmmUh/h2t7s+M8oPpIPxgNACWa+6ESR57kXstwqPiCut0V8NRpcwgU7A==}
     dependencies:
@@ -1701,6 +1712,80 @@ packages:
   /normalize-wheel-es/1.1.1:
     resolution: {integrity: sha512-157VNH4CngrcsvF8xOVOe22cwniIR3nxSltdctvQeHZj8JttEeOXffK28jucWfWBXs0QNetAumjc1GiInnwX4w==}
     dev: false
+
+  /npm/9.4.0:
+    resolution: {integrity: sha512-eT/yB9VFgnqJjMZN++RDcKPyuvEl3iM//bfJzAa3F9+x9l/x8XJUYnHAy0K6ep4JVNTxCUAp/wgy0pBicTZr5A==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+    hasBin: true
+    dev: false
+    bundledDependencies:
+      - '@isaacs/string-locale-compare'
+      - '@npmcli/arborist'
+      - '@npmcli/config'
+      - '@npmcli/map-workspaces'
+      - '@npmcli/package-json'
+      - '@npmcli/run-script'
+      - abbrev
+      - archy
+      - cacache
+      - chalk
+      - ci-info
+      - cli-columns
+      - cli-table3
+      - columnify
+      - fastest-levenshtein
+      - fs-minipass
+      - glob
+      - graceful-fs
+      - hosted-git-info
+      - ini
+      - init-package-json
+      - is-cidr
+      - json-parse-even-better-errors
+      - libnpmaccess
+      - libnpmdiff
+      - libnpmexec
+      - libnpmfund
+      - libnpmhook
+      - libnpmorg
+      - libnpmpack
+      - libnpmpublish
+      - libnpmsearch
+      - libnpmteam
+      - libnpmversion
+      - make-fetch-happen
+      - minimatch
+      - minipass
+      - minipass-pipeline
+      - mkdirp
+      - ms
+      - node-gyp
+      - nopt
+      - npm-audit-report
+      - npm-install-checks
+      - npm-package-arg
+      - npm-pick-manifest
+      - npm-profile
+      - npm-registry-fetch
+      - npm-user-validate
+      - npmlog
+      - p-map
+      - pacote
+      - parse-conflict-json
+      - proc-log
+      - qrcode-terminal
+      - read
+      - read-package-json
+      - read-package-json-fast
+      - semver
+      - ssri
+      - tar
+      - text-table
+      - tiny-relative-date
+      - treeverse
+      - validate-npm-package-name
+      - which
+      - write-file-atomic
 
   /nprogress/0.2.0:
     resolution: {integrity: sha1-y480xTIT2JVyP8urkH6UIq28r7E=}
@@ -2214,6 +2299,16 @@ packages:
       semver: 7.3.5
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /vue-hljs/3.0.1_ddtcwkl4gnhl2kmu3dqyzqs5pe:
+    resolution: {integrity: sha512-o4Pw7bgHKCamdm2NeIVkX8Ck2GzDTDpa25+rV0LTDhosN5DFdJop3YaNm7hI6AfxCbVIwue87Cv/h/Nqp0khSQ==}
+    peerDependencies:
+      highlight.js: ^10.0.0
+      vue: ^3.0.0
+    dependencies:
+      highlight.js: 11.7.0
+      vue: 3.2.26
     dev: false
 
   /vue-router/4.0.0-beta.13_vue@3.2.26:

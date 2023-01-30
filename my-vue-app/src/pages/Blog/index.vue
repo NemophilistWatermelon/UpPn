@@ -46,20 +46,20 @@
   <div class="max-full mt-3">
     <Title title="Blogs"></Title>
     <div class="title-wrap">
-      <Title 
-        v-for="(item, index) in Blog.blogCat" 
+      <Title
+        v-for="(item, index) in Blog.blogCat"
         :key="index"
         @click="readBlogDataByKey(item)"
-        class="title-item" 
+        class="title-item"
         :class="Blog.currentTag === item ? 'active' : ''"
-        :title="item" 
+        :title="item"
       />
     </div>
 
     <template v-if="Blog.currentBlog.length">
       <div class="post-item" v-for="item in Blog.currentBlog">
         <RouterLink :to="'/posts/' + item.path ">{{ item.name}}</RouterLink>
-        <div class="other"> 
+        <div class="other">
           <span>{{ item.time }} · <span class="readTime">{{ item.readTime }}</span></span>
         </div>
     </div>
@@ -68,7 +68,7 @@
     <template v-else>
       <NullMessage />
     </template>
-    
+
   </div>
 </template>
 
@@ -82,7 +82,7 @@
     font-size: 1em;
     color: var(--half-gray-128);
     transition: .3s color ease;
-    &.active, 
+    &.active,
     &:hover {
       color: var(--intro-h1)
     }
@@ -93,7 +93,7 @@
   margin-bottom: 15px;
   font-family: var(--common-font-family);
   .readTime {
-    color: #7a7a7a;  
+    color: #7a7a7a;
   }
 
   &:hover {
