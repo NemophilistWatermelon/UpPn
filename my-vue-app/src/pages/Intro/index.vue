@@ -53,7 +53,7 @@
       font-size: var(--intro-h1-size);
       color: var(--intro-h1);
       transform: translateX(0);
-      animation: rightToLeft ease-in-out .6s forwards 2;
+      //animation: rightToLeft ease-in-out .6s forwards 2;
     }
   }
 

@@ -15,7 +15,7 @@
 <!--      <img src="./imgs/2.jpg" alt="">-->
 <!--    </div>-->
 
-<div class="dialog-content-realLine">
+<div class="dialog-content-realLine" ref="content">
 <template
   v-for="(item, index) of baseLine"
 >
@@ -39,6 +39,7 @@
         <template v-for="(lineData, idx) in item.data">
 
           <div class="dl-point"
+               :lineName="lineData.lineName"
                :style="getStyle(item.option, lineData.sumLen)"
                :data-set-width="lineData.sumLen">
             <template v-for="it in lineData.lineData">
@@ -192,23 +193,24 @@
         }
         // 绘制线路底图线条
         // let testLine = [590, 1300, 3800, 1200, 600]
-        let testLine = [300, 1000, 5000, 800, 100]
+        let testLine = [500, 1700, 1900, 2900]
 
         let testLine1 = [
           {
             lineName: '电缆1',
-            sumLen: 300,
+            sumLen: 500,
             lineData: [
               {
                 pointType: '导线',
-                pointName: '导线1',
+                pointName: '导线开始',
                 pointShow: true,
               },
               {
                 pointType: '接头',
-                pointName: '接头1',
+                pointName: '*',
                 pointShow: true,
               },
+
               {
                 pointType: '隐患点',
                 pointName: 'xxxx故障',
@@ -217,13 +219,18 @@
               {
                 pointType: '导线',
                 pointName: '导线2',
+                pointShow: true,
+              },
+              {
+                pointType: '接头',
+                pointName: '$',
                 pointShow: true,
               },
             ],
           },
           {
             lineName: '电缆2',
-            sumLen: 2700,
+            sumLen: 500,
             lineData: [
               {
                 pointType: '导线',
@@ -232,7 +239,7 @@
               },
               {
                 pointType: '接头',
-                pointName: '接头1',
+                pointName: '*',
                 pointShow: true,
               },
               {
@@ -243,22 +250,27 @@
               {
                 pointType: '导线',
                 pointName: '导线2',
+                pointShow: true,
+              },
+              {
+                pointType: '接头',
+                pointName: '$',
                 pointShow: true,
               },
             ],
           },
           {
             lineName: '电缆3',
-            sumLen: 1900,
+            sumLen: 500,
             lineData: [
               {
                 pointType: '导线',
-                pointName: '导线1',
+                pointName: '导线段',
                 pointShow: true,
               },
               {
                 pointType: '接头',
-                pointName: '接头1',
+                pointName: '*',
                 pointShow: true,
               },
               {
@@ -268,7 +280,12 @@
               },
               {
                 pointType: '导线',
-                pointName: '导线2',
+                pointName: '导线段',
+                pointShow: true,
+              },
+              {
+                pointType: '接头',
+                pointName: '$',
                 pointShow: true,
               },
             ],
@@ -279,12 +296,12 @@
             lineData: [
               {
                 pointType: '导线',
-                pointName: '导线1',
+                pointName: '导线段',
                 pointShow: true,
               },
               {
                 pointType: '接头',
-                pointName: '接头1',
+                pointName: '*',
                 pointShow: true,
               },
               {
@@ -294,7 +311,12 @@
               },
               {
                 pointType: '导线',
-                pointName: '导线2',
+                pointName: '导线段',
+                pointShow: true,
+              },
+              {
+                pointType: '接头',
+                pointName: '$',
                 pointShow: true,
               },
             ],
@@ -304,7 +326,7 @@
         let n = 0
 
         testLine1.forEach(item => {
-          n += item.sumLen
+          n += item.sumLen + 100
         })
         let findLine = give_line_couple(n)
         let revertObj = {}
@@ -340,7 +362,8 @@
         }
 
         // 存放起始电站
-        revertObj[0].data[revertObj[0].data.length - 1].lineData.unshift({
+        console.log( revertObj[0], '22323')
+        revertObj[0].data[0].lineData.unshift({
           start: '电站开始',
           pointType: '电站',
           pointShow: true,
@@ -367,6 +390,8 @@
             ]
           }
         }
+
+        console.log(revertObj)
 
         this.baseLine = revertObj
 
@@ -518,6 +543,10 @@
        * @param position 所处位置
        */
       activeStyle (totalSumLen, element, pointType, position) {
+        console.log(totalSumLen, position)
+          // if (position.includes('1000')) {
+          //   totalSumLen / 1000
+          // }
         if (totalSumLen >= 1000) {
           totalSumLen /= 10
         }
@@ -593,7 +622,7 @@
 
 <style scoped lang="scss">
 .line-container {
-  background-color: #1b3f57;
+  //background-color: #1b3f57;
   border-radius: 10px;
   height: 900px;
   overflow: hidden;
@@ -650,9 +679,7 @@
   }
 
   .dl-point {
-    width: 108px;
     height: 10px;
-    background-color: rgb(5,125,201);
     span.text {
       top: -28px;
       white-space: nowrap;
@@ -661,15 +688,25 @@
   }
 
   .jt-point {
+    position: relative;
     width: 20px;
     height: 20px;
-    border-radius: 50% 50%;
+    border-radius: 50%;
+    background-color: red;
     &.img {
       background-size: 100% 100%;
       background-repeat: no-repeat;
       background-image: url('./imgs/jt.png');
     }
+
+    span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-52%, 14%);
+    }
     span.text {
+
       top: 26px;
       color: black;
     }
@@ -678,7 +715,8 @@
   .dx-point {
     width: 108px;
     height: 10px;
-    background-color: rgb(44,98,132);
+    border-top: 3px dashed blue;
+    //background-color: rgb(44,98,132);
     span.text {
       top: 26px;
       color: #fff;
@@ -809,7 +847,7 @@
   top: 12px;
   left: -4px;
 }
-$baseLineColor: red;
+$baseLineColor: rgba(222, 212, 212, 0.51);
 .index-end {
   flex-direction: row-reverse;
 }
@@ -817,6 +855,7 @@ $baseLineColor: red;
   width: 100%;
   padding: 57px;
   height: 100%;
+  overflow: auto;
   .real-line-block {
     position: relative;
     align-items: center;
@@ -829,7 +868,7 @@ $baseLineColor: red;
       border: 1px  solid transparent;
       border-top-color: $baseLineColor;
       .dl-point {
-        position: absolute;
+        //position: absolute;
       }
     }
 
@@ -868,7 +907,7 @@ $baseLineColor: red;
     }
 
     .dx-point {
-      background-color: coral;
+      //background-color: coral;
     }
 
     .dx-point, .jt-point {

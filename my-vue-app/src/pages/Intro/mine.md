@@ -1,4 +1,4 @@
-# WaterMelon ✋🏻
+# WaterMelon
 Hey! My name is QinKai, a <span class="keyword">Front End Dev</span> based in ShangHai, China.
 
 
