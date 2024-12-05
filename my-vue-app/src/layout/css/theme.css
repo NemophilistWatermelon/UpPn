@@ -51,4 +51,18 @@ html:root {
 
 a {
   text-decoration: none;
+}
+
+.blog_img {
+  margin: 10px 0;
+  width: 600px;
+  height: 300px;
+  box-shadow: 0 0 5px 0 var(--half-gray-128);
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+.blog_img:hover {
+  transform: scale(1.2);
 }/*# sourceMappingURL=theme.css.map */
