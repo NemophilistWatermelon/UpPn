@@ -275,21 +275,26 @@ let prop = {
 
 
 
-// 核心方法 TODO 待完善 (处理成想要的节点数据)
-
-const nodeProcess = (arr) => {
+// 核心方法 TODO 待完善 (处理成想要的节点数据) 用了一个loadsh 库 注意！
+uiProcessForTips(arr) {
+  if (!Array.isArray(arr)) return arr
   let jumpNum = 3;
   let jumpArray = [];
-  // 开口方向
+  // 设置开口方向
   let dir = ["right", "left"];
   let dirIndex = 0;
 
+  // 分数据 分成二维数组
   for (let i = 0; i < arr.length; i += jumpNum) {
     jumpArray.push(arr.slice(i, i + jumpNum));
   }
+
+
+  // 处理数据
   for (let i = 0; i < jumpArray.length; i++) {
     // 不够3个要前插入数据
     if (jumpArray[i].length < jumpNum) {
+      // 如果不够3个一行的数据 进行补录数据
       for (let j = 0; j <= jumpNum - jumpArray[i].length; j++) {
         let o = Object.assign({}, {
           isOpacityZero: true,
@@ -300,23 +305,71 @@ const nodeProcess = (arr) => {
         jumpArray[i].push(o);
       }
 
-      jumpArray[i].reverse();
+      if (i % 2 === 1) {
+        jumpArray[i].reverse();
+      }
+
     }
 
     let next = jumpArray[i + 1];
-    if (next) {
+
+    // 隔行设置开口方向
+    // 偶数行因为用了样式及补数据的逻辑进行隐藏所以不用关心，只关心奇数行处理即可
+    if ((i + 1) % 2 === 1) {
       // 数组中的最后一个
       let last = jumpArray[i][jumpArray[i].length - 1];
-      last.openDir = dir[dirIndex];
+      // 数组第一个
+      let prev = jumpArray[i][0];
+      console.log({
+        dirIndex,
+        i
+      })
+      // 设置奇数行开口方向
+      if (dirIndex === 1) {
+        prev.OpeningDirection = dir[dirIndex]
+        if ((i + 1) % 2 == 1) {
+          last.OpeningDirection = dir[0]
+        }
+
+      } else {
+        last.OpeningDirection = dir[dirIndex]
+        if (i != 0 && (i + 1) % 2 == 1) {
+          prev.OpeningDirection = dir[1]
+        }
+      }
+
+
+
+      if (!next) {
+        // 相邻节点间是否出现指示线
+        for (let j = 0; j < jumpNum; j++) {
+          let rowNextNode = jumpArray[i][j + 1]
+          if (rowNextNode && rowNextNode.isOpacityZero) {
+            jumpArray[i][j].stopList = true
+          }
+        }
+
+        // 隐藏虚线指示线
+        jumpArray[i][jumpArray[i].length - 1].stopList = true
+      }
 
       dirIndex += 1;
       if (dirIndex > 1) {
         dirIndex = 0;
       }
+
     }
+
+
+
   }
-  console.log(jumpArray);
-};
+
+
+  // _.flattenDepth([1,23, [123,1231, 54535232], [[[234, [1313], 1321, [1231]]]]],Infinity)
+  // ([1, 23, 123, 1231, 54535232, 234, 1313, 1321, 1231]
+
+  return _.flattenDepth(jumpArray,Infinity)
+},
 
 let arr = [{
   node: "5",
@@ -349,7 +402,7 @@ let arr = [{
     node: "14",
   },
 ];
-nodeProcess(arr);
+uiProcessForTips(arr);
 
 
 ```

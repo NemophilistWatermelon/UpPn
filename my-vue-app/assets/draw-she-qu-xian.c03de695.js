@@ -268,21 +268,26 @@ let prop = {
 
 
 
-// \u6838\u5FC3\u65B9\u6CD5 TODO \u5F85\u5B8C\u5584 (\u5904\u7406\u6210\u60F3\u8981\u7684\u8282\u70B9\u6570\u636E)
-
-const nodeProcess = (arr) =&gt; {
+// \u6838\u5FC3\u65B9\u6CD5 TODO \u5F85\u5B8C\u5584 (\u5904\u7406\u6210\u60F3\u8981\u7684\u8282\u70B9\u6570\u636E) \u7528\u4E86\u4E00\u4E2Aloadsh \u5E93 \u6CE8\u610F\uFF01
+uiProcessForTips(arr) {
+  if (!Array.isArray(arr)) return arr
   let jumpNum = 3;
   let jumpArray = [];
-  // \u5F00\u53E3\u65B9\u5411
+  // \u8BBE\u7F6E\u5F00\u53E3\u65B9\u5411
   let dir = [&quot;right&quot;, &quot;left&quot;];
   let dirIndex = 0;
 
+  // \u5206\u6570\u636E \u5206\u6210\u4E8C\u7EF4\u6570\u7EC4
   for (let i = 0; i &lt; arr.length; i += jumpNum) {
     jumpArray.push(arr.slice(i, i + jumpNum));
   }
+
+
+  // \u5904\u7406\u6570\u636E
   for (let i = 0; i &lt; jumpArray.length; i++) {
     // \u4E0D\u591F3\u4E2A\u8981\u524D\u63D2\u5165\u6570\u636E
     if (jumpArray[i].length &lt; jumpNum) {
+      // \u5982\u679C\u4E0D\u591F3\u4E2A\u4E00\u884C\u7684\u6570\u636E \u8FDB\u884C\u8865\u5F55\u6570\u636E
       for (let j = 0; j &lt;= jumpNum - jumpArray[i].length; j++) {
         let o = Object.assign({}, {
           isOpacityZero: true,
@@ -293,23 +298,71 @@ const nodeProcess = (arr) =&gt; {
         jumpArray[i].push(o);
       }
 
-      jumpArray[i].reverse();
+      if (i % 2 === 1) {
+        jumpArray[i].reverse();
+      }
+
     }
 
     let next = jumpArray[i + 1];
-    if (next) {
+
+    // \u9694\u884C\u8BBE\u7F6E\u5F00\u53E3\u65B9\u5411
+    // \u5076\u6570\u884C\u56E0\u4E3A\u7528\u4E86\u6837\u5F0F\u53CA\u8865\u6570\u636E\u7684\u903B\u8F91\u8FDB\u884C\u9690\u85CF\u6240\u4EE5\u4E0D\u7528\u5173\u5FC3\uFF0C\u53EA\u5173\u5FC3\u5947\u6570\u884C\u5904\u7406\u5373\u53EF
+    if ((i + 1) % 2 === 1) {
       // \u6570\u7EC4\u4E2D\u7684\u6700\u540E\u4E00\u4E2A
       let last = jumpArray[i][jumpArray[i].length - 1];
-      last.openDir = dir[dirIndex];
+      // \u6570\u7EC4\u7B2C\u4E00\u4E2A
+      let prev = jumpArray[i][0];
+      console.log({
+        dirIndex,
+        i
+      })
+      // \u8BBE\u7F6E\u5947\u6570\u884C\u5F00\u53E3\u65B9\u5411
+      if (dirIndex === 1) {
+        prev.OpeningDirection = dir[dirIndex]
+        if ((i + 1) % 2 == 1) {
+          last.OpeningDirection = dir[0]
+        }
+
+      } else {
+        last.OpeningDirection = dir[dirIndex]
+        if (i != 0 &amp;&amp; (i + 1) % 2 == 1) {
+          prev.OpeningDirection = dir[1]
+        }
+      }
+
+
+
+      if (!next) {
+        // \u76F8\u90BB\u8282\u70B9\u95F4\u662F\u5426\u51FA\u73B0\u6307\u793A\u7EBF
+        for (let j = 0; j &lt; jumpNum; j++) {
+          let rowNextNode = jumpArray[i][j + 1]
+          if (rowNextNode &amp;&amp; rowNextNode.isOpacityZero) {
+            jumpArray[i][j].stopList = true
+          }
+        }
+
+        // \u9690\u85CF\u865A\u7EBF\u6307\u793A\u7EBF
+        jumpArray[i][jumpArray[i].length - 1].stopList = true
+      }
 
       dirIndex += 1;
       if (dirIndex &gt; 1) {
         dirIndex = 0;
       }
+
     }
+
+
+
   }
-  console.log(jumpArray);
-};
+
+
+  // _.flattenDepth([1,23, [123,1231, 54535232], [[[234, [1313], 1321, [1231]]]]],Infinity)
+  // ([1, 23, 123, 1231, 54535232, 234, 1313, 1321, 1231]
+
+  return _.flattenDepth(jumpArray,Infinity)
+},
 
 let arr = [{
   node: &quot;5&quot;,
@@ -342,7 +395,7 @@ let arr = [{
     node: &quot;14&quot;,
   },
 ];
-nodeProcess(arr);
+uiProcessForTips(arr);
 
 
 </code></pre>
