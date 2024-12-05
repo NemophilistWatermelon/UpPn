@@ -5,7 +5,7 @@
 
 html:root {
   --half-gray-128: rgb(128, 128, 128);
-  --cut-theme-font-icon-size: 22px; 
+  --cut-theme-font-icon-size: 22px;
 
   // 导航文字颜色
   --nav-text-color: var(--half-gray-128);
@@ -67,5 +67,19 @@ a {
   text-decoration: none;
 }
 
+
+.blog_img {
+  margin: 10px 0;
+  width: 600px;
+  height: 300px;
+  box-shadow: 0 0 5px 0  var(--half-gray-128);
+  object-fit: scale-down;
+  border-radius: 10px;
+  transition: all .3s;
+  &:hover {
+    transform: scale(1.2);
+  }
+
+}
 
 

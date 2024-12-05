@@ -19,8 +19,8 @@ export default defineComponent({
       callback(await mdhtml)
     }
     unMdByRoute(target => {
-      var html = markdown(target.html)
-      str.value = html
+      // var html = markdown(target.html)
+      str.value = target.html
     })
     return {
       str

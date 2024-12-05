@@ -2,7 +2,7 @@
  *  WebSite: {
  *    SubTitle
  *  }
- * 
+ *
  */
 
 const Template = function (o) {
@@ -101,7 +101,17 @@ const life = {
 
 }
 
-
+const draw = {
+  'draw-she-qu-xian': {
+    ...new Template({
+      path: 'draw-she-qu-xian',
+      name: '弯曲的蛇形曲线',
+      text: '上海疫情😢',
+      time: 'Dec 5',
+      readTime: '5 min'
+    })
+  },
+}
 const data = {
   // 技能篇
   技能篇: [
@@ -116,10 +126,14 @@ const data = {
     life.上海疫情,
     life.周日日记,
     life.新的希望,
-    life.送给老弟,
+    // life.送给老弟,
   ],
   // 心灵鸡汤
   心灵鸡汤: {},
+  // 画页面
+  这个页面这么画: [
+    draw["draw-she-qu-xian"],
+  ],
 }
 
 
