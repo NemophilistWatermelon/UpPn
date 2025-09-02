@@ -5,11 +5,13 @@ import Player from './iconComponent/Player.vue'
 import PainStr from './iconComponent/PainStr.vue'
 import Blog from './iconComponent/Blog.vue'
 import Terminal from './iconComponent/Terminal.vue'
+import mapbox from "@/model/PROJECT/iconComponent/Mapbox.vue";
+import Tone from "@/model/PROJECT/iconComponent/Tone.vue";
 
 const Projects = reactive({
   pro: [
     {
-      capName: 'Extions 插件:',
+      capName: 'Chrome 扩展插件:',
       capList: [
         {
           icon: AdsIcon,
@@ -20,25 +22,37 @@ const Projects = reactive({
         {
           icon: Copy,
           name: 'Dscn-Web-Copy',
-          desc: 'Dscn 网无登录拷贝内容',
+          desc: 'csdn 网无登录拷贝内容',
           url: 'https://github.com/NemophilistWatermelon/DSCN-COPY-CODE'
         }
       ]
     },
     {
-      capName: 'Spider for NodeJS:',
+      capName: 'Nodejs:',
       capList: [
         {
           icon: Spider,
-          name: '58 房产信息',
-          desc: '用 Node.js 实现 爬取 58 房产信息',
+          name: '房产信息',
+          desc: '用 Node.js 实现 爬取 five eight 房产信息',
           url: 'https://github.com/NemophilistWatermelon/58-Node-'
         },
+        {
+          icon: Tone,
+          name: 'ToneBox',
+          desc: '快速生成Express MVC 脚手架工具',
+          url: 'https://www.npmjs.com/package/tone-box-express'
+        },
+      ]
+    },
+    {
+      capName: 'Page:',
+      capList: [
         {
           icon: Player,
           name: 'Musicer',
           desc: '纯 ECMAScript 实现的音乐播放器',
-          url: 'https://github.com/NemophilistWatermelon/music_player'
+          // url: 'https://github.com/NemophilistWatermelon/music_player'
+          url: 'https://music-player-steel-ten.vercel.app/'
         }
       ]
     },
@@ -49,7 +63,8 @@ const Projects = reactive({
           icon: PainStr,
           name: 'PainStr',
           desc: '封装的动态插入 CSS 样式, 通过循环插入样式, 慢慢插入 CSS 出现效果',
-          url: 'https://github.com/NemophilistWatermelon/PaintStr'
+          // url: 'https://github.com/NemophilistWatermelon/PaintStr'
+          url: 'https://paint-str.vercel.app/'
         }
       ]
     },
@@ -68,6 +83,17 @@ const Projects = reactive({
           desc: '一个非常 COOL の 终端',
           url: 'https://self-me.vercel.app/#/terminal'
         }
+      ]
+    },
+    {
+      capName: '课程:',
+      capList: [
+        {
+          icon: mapbox,
+          name: 'mapBox基础入门',
+          desc: '讲了一些关于mapbox使用的课程',
+          url: 'https://www.bilibili.com/video/BV1iU3ozKEdH/?spm_id_from=333.1387.homepage.video_card.click'
+        },
       ]
     },
   ]

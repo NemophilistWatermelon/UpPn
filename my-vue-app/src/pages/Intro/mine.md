@@ -18,8 +18,8 @@ How Find Me:
 
 Skill:
   - About Data Proces Show: <span class='keyword'>Echarts</span>
-  - Front End Frame: <span class='keyword'>VUE</span>
-  - Server: <span class='keyword'>NODE.JS</span>
+  - Front End Frame: <span class='keyword'>Vue</span>、<span class='keyword'>mapbox</span>、<span class='keyword'>openlayers</span>
+  - Server: <span class='keyword'>Node.js</span>
 
 
 
