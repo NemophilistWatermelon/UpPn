@@ -58,7 +58,7 @@ const life = {
       path: 'shang-hai-yi-qing',
       name: '上海疫情😢!',
       text: '上海疫情😢',
-      time: 'Apr 31',
+      time: '22 Apr 31',
       readTime: '3 min'
     })
   },
@@ -67,7 +67,7 @@ const life = {
       path: 'qian-duan-zhi-lu',
       name: '如何踏上这条前端路!',
       text: '如何踏上这条前端路',
-      time: 'May 03',
+      time: '22 May 03',
       readTime: '未知'
     })
   },
@@ -76,8 +76,8 @@ const life = {
       path: 'zhou-ri-ri-ji',
       name: '周日日记 🤷🏻‍♀️',
       text: '周日日记',
-      time: 'May 08',
-      readTime: '未知'
+      time: '22 May 08',
+      readTime: '10 s'
     })
   },
   新的希望: {
@@ -85,8 +85,8 @@ const life = {
       path: 'hope',
       name: '新的希望 🎁',
       text: '新的希望🎁',
-      time: 'May 19',
-      readTime: '未知'
+      time: '22 May 19',
+      readTime: '10 s'
     })
   },
   送给老弟: {
@@ -112,14 +112,28 @@ const draw = {
     })
   },
 }
+
+const classes = {
+  'mapbox-one': {
+    ...new Template({
+      path: 'map-box-lesson-one',
+      name: '第一章：利用mapbox初始化地图',
+      text: '上海疫情😢',
+      time: '25 Oct 15',
+      readTime: '5 min'
+    })
+  },
+}
+
+
 const data = {
   // 技能篇
-  技能篇: [
-    skill.土发造炮,
-    skill.Vue2vs3,
-    skill.前端开发套路,
-    skill.bar,
-  ],
+  // 技能篇: [
+  //   skill.土发造炮,
+  //   skill.Vue2vs3,
+  //   skill.前端开发套路,
+  //   skill.bar,
+  // ],
   // 生活小记
   生活小记: [
     life.前端之路,
@@ -130,6 +144,9 @@ const data = {
   ],
   // 心灵鸡汤
   心灵鸡汤: {},
+  '课程笔记': [
+    classes["mapbox-one"],
+  ],
   // 画页面
   这个页面这么画: [
     draw["draw-she-qu-xian"],
