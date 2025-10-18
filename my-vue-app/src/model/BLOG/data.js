@@ -106,7 +106,6 @@ const draw = {
     ...new Template({
       path: 'draw-she-qu-xian',
       name: '弯曲的蛇形曲线',
-      text: '上海疫情😢',
       time: 'Dec 5',
       readTime: '5 min'
     })
@@ -118,7 +117,6 @@ const classes = {
     ...new Template({
       path: 'map-box-lesson-one',
       name: '第一章：利用mapbox初始化地图',
-      text: '上海疫情😢',
       time: '25 Oct 15',
       readTime: '5 min'
     })

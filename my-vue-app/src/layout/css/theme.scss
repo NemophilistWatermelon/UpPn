@@ -9,7 +9,7 @@ html:root {
 
   // 导航文字颜色
   --nav-text-color: var(--half-gray-128);
-  --m-full: 600px;
+  --m-full: 80%;
 
   // 进度条高度
   --ngprogress-bar-height: 1px;
@@ -83,3 +83,28 @@ a {
 }
 
 
+.template-container {
+  pre {
+    position: relative;
+    padding-top: 10px;
+  }
+  .cp_btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    cursor: pointer;
+    background-color: unset;
+    font-size: 14px;
+    svg {
+      transition: all .3s;
+      fill: var(--half-gray-128);
+    }
+
+    &:hover {
+      svg {
+        fill: #353535;
+      }
+    }
+  }
+}

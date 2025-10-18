@@ -19,7 +19,7 @@ export default defineConfig({
     }),
     mdPlugin.plugin({
       mode: ['html']
-    })
+    }),
   ],
   resolve: {
     alias: {

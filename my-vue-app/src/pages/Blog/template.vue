@@ -1,12 +1,21 @@
 <script >
 
 import { markdown } from './wordsReducer'
+import {ElMessage} from "element-plus";
+import { onMounted } from 'vue'
+
 export default defineComponent({
   name: 'template',
 
   setup() {
     const route = useRoute()
     const str = ref()
+
+    const delay = async ms => {
+      return new Promise(resolve => {
+        setTimeout(resolve, ms)
+      })
+    }
 
     const unMdByRoute = async function(callback) {
       const allFile = import.meta.glob('./*')
@@ -18,10 +27,33 @@ export default defineComponent({
       const mdhtml = mdFile[`./${route.params.md}.md`]()
       callback(await mdhtml)
     }
-    unMdByRoute(target => {
+    unMdByRoute(async target => {
       // var html = markdown(target.html)
       str.value = target.html
+      await delay(1000)
+      addCopy()
     })
+
+    /**
+     * 给模板添加复制方法
+     */
+    const addCopy = () => {
+      let cp_btns = document.querySelectorAll('.template-container .cp_btn')
+      Array.from(cp_btns).forEach(item => {
+        item.onclick = (ev) => {
+          ev.stopPropagation()
+          ev.preventDefault()
+
+          let codeNum = item.dataset.code
+          let parentEle = item.parentElement
+          let code = parentEle.querySelector(`code[js-code-block="${codeNum}"]`)
+          navigator.clipboard.writeText(code.innerText)
+
+          ElMessage.success('复制成功☺️')
+        }
+      })
+    }
+
     return {
       str
     }
@@ -33,7 +65,6 @@ export default defineComponent({
   <div class="template-container max-full" v-html="str" v-highlight>
 
   </div>
-
 </template>
 
 
