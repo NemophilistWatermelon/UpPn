@@ -27,9 +27,9 @@
 <div id="map"></div>
 ```
 
-- 配置mapboxtoken 
+- 配置mapbox token 
 ```js
-mapboxgl.accessToken = 'pk.eyJ1IjoiY2Fyb2JhcmFuIiwiYSI6ImNrZ2x5ZzZ5bzAwMzYzZnF5ZzZ5ZzZ5ZzkifQ.
+mapboxgl.accessToken = 'pk.eyJ1IjoiNGgzajgiLCJhIjoiY202cTRneXdpMDlheDJpb21rdGs2M3V6cSJ9.Ifg4pD0p8LxYmxmxwoTBNA'
 ```
 
 
@@ -43,6 +43,16 @@ const map = new mapboxgl.Map({
     zoom: 2
 })
 ```
+
+<br/>
+
+<span style='border: 2px solid #353535; padding: 5px;'>注</span>:
+
+<br/>
+
+> mapbox 没有style 配置的话是加载不出来东西的哟~
+
+<br/>
 
 <span style='border: 2px solid #353535; padding: 5px;'>结</span>:
 

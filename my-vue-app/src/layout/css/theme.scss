@@ -82,12 +82,32 @@ a {
 
 }
 
+@mixin mine-markdown {
+  a {
+    color: var(--half-gray-128);
+  }
+  blockquote {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: rgba(53, 53, 53, 0.1);
+  }
+}
 
 .template-container {
+
+  @include mine-markdown();
+
   pre {
     position: relative;
     padding-top: 10px;
+
+    code {
+      min-height: 50px;
+    }
   }
+
+
   .cp_btn {
     position: absolute;
     top: 0;
