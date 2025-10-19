@@ -121,6 +121,14 @@ const classes = {
       readTime: '5 min'
     })
   },
+  'mapbox-sec': {
+    ...new Template({
+      path: 'create-point',
+      name: '第二章：创建点位数据',
+      time: '25 Oct 19',
+      readTime: '5 min'
+    })
+  }
 }
 
 
@@ -144,6 +152,7 @@ const data = {
   心灵鸡汤: {},
   '课程笔记': [
     classes["mapbox-one"],
+    classes["mapbox-sec"],
   ],
   // 画页面
   这个页面这么画: [
