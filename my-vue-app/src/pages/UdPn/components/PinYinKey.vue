@@ -20,19 +20,26 @@
   window.addEventListener('keydown', onKeyDown)
   window.addEventListener('keyup', onKeyUp)
 
-
+  let keyRowThird = ref([
+      ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+      ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+      ['z', 'x', 'c', 'v', 'b', 'n', 'm']
+  ])
 </script>
 
 <template>
 <div class="keyMap">
-  <div class="pin-item" 
-    :key="index"
-    :class="currentDownKeys === item ? 'pin-item-down' : ''"
-     v-for="(item, index) in pinKeys"
-  >
-    <div class="top">{{ item }}</div>
-    <div class="bottom">{{ wordsMapReactive[item] }}</div>
+  <div :key="idx" class="keyRow" v-for="(it, idx) in keyRowThird">
+    <div class="pin-item"
+         :key="index"
+         :class="currentDownKeys === item ? 'pin-item-down' : ''"
+         v-for="(item, index) in it"
+    >
+      <div class="top">{{ item }}</div>
+      <div class="bottom">{{ wordsMapReactive[item] }}</div>
+    </div>
   </div>
+
 </div>
 </template>
 
@@ -44,6 +51,11 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+
+    .keyRow {
+      display: flex;
+    }
+
   .pin-item {
     display: inline-block;
     width: 100px;

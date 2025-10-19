@@ -1,4 +1,33 @@
-const wordsMap = {
+
+let keyMap = [
+  'q',
+  'w',
+  'e',
+  'r',
+  't',
+  'y',
+  'u',
+  'i',
+  'o',
+  'p',
+  'a',
+  's',
+  'd',
+  'f',
+  'g',
+  'h',
+  'j',
+  'k',
+  'l',
+  'z',
+  'x',
+  'c',
+  'v',
+  'b',
+  'n',
+  'm',
+]
+let exp_wordsMap = {
   rule: {
     自然码: {
       a: 'a | ',
@@ -30,7 +59,18 @@ const wordsMap = {
     }
   },
 }
+let wordsMap = {
+  rule: {
+    自然码: {}
+  }
+}
 
-export default { 
+keyMap.forEach(item => {
+  wordsMap.rule.自然码[item] = exp_wordsMap.rule.自然码[item]
+})
+
+console.log(wordsMap)
+
+export default {
   wordsMap
 }
