@@ -1,0 +1,1 @@
+import{_ as t,o as _,c as a,t as s}from"./index.640a5741.js";const r={},c={class:"defalut-text title"};function o(e,n){return _(),a("div",c,s(e.$attrs.title),1)}var d=t(r,[["render",o],["__scopeId","data-v-19dfa0f2"]]);export{d as T};
