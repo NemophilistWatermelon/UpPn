@@ -34,18 +34,26 @@ const Project = Model.readByKey('pro')
   </div>
 </template>
 
-
 <style lang="scss" scoped>
 
 .list-container {
+  position: relative;
   margin-top: 2.3em;
   padding: 0 0.3em;
   box-sizing: border-box;
 }
 .catgory-name {
-  color: var(--half-gray-128);
+  color: #eee;
   font-family: var(--inter-font-family);
   margin-bottom: .8em;
+  position: absolute;
+  top: -15px;
+  left: -10px;
+  z-index: -1;
+  font-size: 50px;
+  -webkit-text-stroke: 1px var(--stroke-text-color);
+  white-space: nowrap;
+  -webkit-text-fill-color: transparent;
 }
 .catgory-item {
   display: grid;
