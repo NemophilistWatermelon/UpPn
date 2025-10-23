@@ -1,8 +1,5 @@
 <script >
-
-import { markdown } from './wordsReducer'
 import {ElMessage} from "element-plus";
-import { onMounted } from 'vue'
 
 export default defineComponent({
   name: 'template',
@@ -18,18 +15,42 @@ export default defineComponent({
     }
 
     const unMdByRoute = async function(callback) {
-      const allFile = import.meta.glob('./*')
-      log({
-        allFile,
-        meta: import.meta
-      })
-      const mdFile = import.meta.glob('./*.md')
-      const mdhtml = mdFile[`./${route.params.md}.md`]()
+      // const allFile = import.meta.glob('./*')
+      let mdFile = import.meta.glob('./*.md')
+      let mdPath = route.params.md
+      // 多层级嵌套
+      if (route.params.md.length > 1) {
+        mdPath = route.params.md.join('/')
+      }
+      // 多层级嵌套
+      if (!mdFile[`./${mdPath}.md`]) {
+        mdFile = import.meta.glob('./**')
+      }
+      const mdhtml = mdFile[`./${mdPath}.md`]()
       callback(await mdhtml)
     }
+
+    const expJSON = {
+      '````加粗文本': {
+        start: '',
+        end: '',
+      },
+    }
+
+    // 解析md内容 替换特定html
+    const pluginExp = (html1, startStr, endStr1) => {
+      if (!expJSON[startStr]) return html1
+      let str = `<p>${startStr}`
+      let endStr = `${endStr1}</p>`
+      html1 = html1.replace(new RegExp(str, 'gm'), expJSON[startStr].start)
+      html1 = html1.replace(new RegExp(endStr, 'gm'), expJSON[startStr].end)
+      return html1
+    }
+
     unMdByRoute(async target => {
       // var html = markdown(target.html)
-      str.value = target.html
+      console.log(target.html)
+      str.value = pluginExp(target.html, 'bbb加粗文本', 'bbb')
       await delay(1000)
       addCopy()
     })

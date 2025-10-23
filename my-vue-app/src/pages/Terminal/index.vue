@@ -113,15 +113,15 @@ export default {
   },
 
   methods: {
-    initNumber() { 
+    initNumber() {
       const num = ''
-      Number.prototype.unoInnerFixed = function (args) { 
+      Number.prototype.unoInnerFixed = function (args) {
         let result = ''
 
-        if (String(this) !== '') { 
+        if (String(this) !== '') {
           let strNumber = String(this)
 
-          if (strNumber.includes('.')) { 
+          if (strNumber.includes('.')) {
             let splitNum = strNumber.split('.')
             let firstNum = splitNum[0]
             let lastNum = splitNum[1]
@@ -206,8 +206,8 @@ export default {
           }
         },
         网易云音乐: {
-          key: 'net',
-          config: {
+            key: 'net',
+            config: {
             desc: '网易云音乐帮助键',
             option: {
               '-s': (args) => {

@@ -1,0 +1,145 @@
+$cardColor: #11191f;
+@mixin flexStyle($align:'center', $justContent:'space-around') {
+  display: flex;
+  align-items: $align;
+  justify-content: $justContent;
+}
+@mixin imgStyle($src) {
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url($src);
+}
+
+@mixin fontFamily {
+  font-family: fantasy;
+}
+
+img {
+  display: block;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@mixin img {
+  img {
+    max-width: 100px;
+    max-height: 200px;
+    margin-right: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    object-fit: contain;
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, .1);
+  }
+}
+@mixin cardInfo {
+  .db_card_info {
+    flex: 1;
+    height: 100%;
+
+    h3 {
+      a {
+        color: #fff !important;
+      }
+    }
+
+    .t_info {
+      @include fontFamily();
+      color: #fff !important;
+      font-size: 12px;
+
+      .time {
+        margin-right: 10px;
+      }
+    }
+
+    .top {
+      @include flexStyle(center, space-between);
+      margin-bottom: 10px;
+    }
+
+    .tags {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      @include flexStyle(center);
+      .tag {
+        color: #ccc;
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 10px;
+        border-radius: 15px;
+        padding: 2px 10px;
+        border: 1px solid #353535;
+        background-color: rgba(53, 53, 53, 0.5);
+      }
+    }
+  }
+
+}
+
+
+@mixin mid {
+  .mid {
+    .desc {
+      // 两行超出省略号
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* 限制显示的行数为3 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: #fff;
+      font-size: 12px;
+    }
+  }
+}
+
+@mixin db_rate {
+  .rate_area {
+    @include flexStyle(center);
+    .db_rate_num {
+      color: gold;
+      margin-left: 10px;
+      font-weight: bold;
+      @include fontFamily();
+    }
+  }
+  .db_rate {
+    width: 72px;
+    height: 12px;
+    @include imgStyle("../img/rate.png");
+    background-size: 69px;
+    background-position: 0 -15px;
+  }
+}
+
+@mixin hover_card {
+  &:hover {
+    height: 100%;
+    .desc {
+      display: block;
+    }
+  }
+}
+
+.db_card_container {
+  @include flexStyle(center, space-around);
+  max-width: 768px;
+  border-radius: 5px;
+  padding: 10px 15px 15px ;
+  background-color: $cardColor;
+  transition: all .3s linear;
+  box-shadow: 0px 0px 3px 0px $cardColor;
+
+  @include img();
+
+  @include cardInfo();
+
+  @include db_rate();
+
+  @include mid();
+
+  @include hover_card();
+}

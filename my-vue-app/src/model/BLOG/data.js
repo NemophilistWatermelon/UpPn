@@ -11,6 +11,7 @@ const Template = function (o) {
   this.text = o.text
   this.time = o.time
   this.readTime = o.readTime
+  return this
 }
 
 const skill = {
@@ -106,10 +107,27 @@ const draw = {
     ...new Template({
       path: 'draw-she-qu-xian',
       name: '弯曲的蛇形曲线',
-      time: 'Dec 5',
+      time: 'Dec 5 2022',
       readTime: '5 min'
     })
   },
+}
+
+const movie = {
+  'dong-ji-dao': {
+    ...new Template({
+      path: 'dong-ji-dao',
+      name: '东极岛',
+      time: 'Oct 5 2025',
+      readTime: '30 s'
+    })
+  },
+  'test': new Template({
+    path: 'test/test',
+    name: 'ts',
+    time: 'Oct 5 2025',
+    readTime: '30 s'
+  })
 }
 
 const classes = {
@@ -157,6 +175,9 @@ const data = {
   // 画页面
   这个页面这么画: [
     draw["draw-she-qu-xian"],
+  ],
+  "观影": [
+    movie['dong-ji-dao'],
   ],
 }
 

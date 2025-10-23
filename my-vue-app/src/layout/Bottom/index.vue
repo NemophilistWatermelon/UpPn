@@ -10,7 +10,7 @@ import { useRouter } from 'vue-router'
 
 <template>
   <div
-   class="cd-container max-full" 
+   class="cd-container max-full max-full-5"
     v-if="!(['/', '/index'].includes(router.currentRoute.value.fullPath))">
     <span @click="onExit">
       cd ../
@@ -37,8 +37,8 @@ import { useRouter } from 'vue-router'
       border-bottom: 2px solid;
     }
   }
-  
 
-  
+
+
 }
 </style>

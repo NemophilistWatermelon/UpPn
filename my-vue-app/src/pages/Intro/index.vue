@@ -21,6 +21,7 @@
 
 <style lang="scss" scoped>
 .intro-container {
+  width: 50%;
   padding: 1.2em;
   box-sizing: border-box;
   font-family: var(--inter-font-family);

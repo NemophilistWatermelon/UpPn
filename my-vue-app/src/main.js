@@ -10,8 +10,9 @@ import Router from './router/index'
 import Store from './store/index'
 import '@/layout/css/theme.scss'
 import hljs from 'highlight.js';
-import 'highlight.js/styles/github-dark.css' //样式
-
+import 'highlight.js/styles/cybertopia-saturated.css' //样式
+import '@/assets/movie/card.scss'
+import ExpMarkdownCustome from '@/plugins/index'
 /* 挂接 */
 const app = createApp(App)
 
@@ -21,7 +22,10 @@ app.use(ElementPlus)
 app.mount('#app')
 //创建v-highlight全局指令
 app.directive('highlight',function (el) {
+  ExpMarkdownCustome.upBold(el)
+  ExpMarkdownCustome.upItems(el)
   let blocks = el.querySelectorAll('pre code');
+
   blocks.forEach((block, index) =>{
     if (['code'.toUpperCase()].includes(block.tagName)) {
       block.setAttribute(`js-code-block`, index)
