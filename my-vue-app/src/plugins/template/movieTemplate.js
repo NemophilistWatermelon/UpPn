@@ -26,7 +26,7 @@ export default class Template {
             <div class="top">
                 <h3><a target="_blank" href="${data.影片地址}">${ data.影片名称 }</a></h3>
                 <div class="rate_area">
-                    <div class="db_rate">
+                    <div class="db_rate" style="--rate: ${ data.评分 !== '暂无评分' ? 14 * (-1 * (10 - parseInt(data.评分))) + 'px' : '-140px' }">
                     </div>
                     <div class="db_rate_num">${ data.评分 } </div>
                 </div>
@@ -37,7 +37,7 @@ export default class Template {
                     <span>${ data.导演 }</span>
                 </div>
                 <div class="t_info">
-                    <span>${ data.主演 }</span>
+                    <span title="${data.主演}">${ data.主演 }</span>
                 </div>
                 <div class="tags">
                     ${ tagStr }

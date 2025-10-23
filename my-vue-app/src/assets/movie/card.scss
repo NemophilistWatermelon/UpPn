@@ -11,6 +11,13 @@ $cardColor: #11191f;
   background-image: url($src);
 }
 
+@mixin rowHidden($hideRowNum: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $hideRowNum; /* 限制显示的行数为3 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 @mixin fontFamily {
   font-family: fantasy;
 }
@@ -51,6 +58,7 @@ img {
       @include fontFamily();
       color: #fff !important;
       font-size: 12px;
+      @include rowHidden(2);
 
       .time {
         margin-right: 10px;
@@ -85,11 +93,7 @@ img {
 @mixin mid {
   .mid {
     .desc {
-      // 两行超出省略号
-      display: -webkit-box;
-      -webkit-line-clamp: 2; /* 限制显示的行数为3 */
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      @include rowHidden(2);
       color: #fff;
       font-size: 12px;
     }
@@ -111,7 +115,41 @@ img {
     height: 12px;
     @include imgStyle("../img/rate.png");
     background-size: 69px;
-    background-position: 0 -15px;
+    background-position: 0 var(--rate);
+
+    &.db_rate-0 {
+      background-position: 0 -140px;
+    }
+    &.db_rate-05 {
+      background-position:  -125px;
+    }
+    &.db_rate-1 {
+      background-position: 0 -112px;
+    }
+    &.db_rate-15 {
+      background-position: 0 -98px;
+    }
+    &.db_rate-2 {
+      background-position: 0 -84px;
+    }
+    &.db_rate-25 {
+      background-position: 0 -70px;
+    }
+    &.db_rate-3 {
+      background-position: 0 -56px;
+    }
+    &.db_rate-35 {
+      background-position: 0 -43px;
+    }
+    &.db_rate-4 {
+      background-position: 0 -29px;
+    }
+    &.db_rate-45 {
+      background-position: 0 -15px;
+    }
+    &.db_rate-5 {
+      background-position: 0 -1px;
+    }
   }
 }
 

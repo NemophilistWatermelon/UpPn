@@ -118,10 +118,16 @@ const movie = {
     ...new Template({
       path: 'dong-ji-dao',
       name: '东极岛',
-      time: 'Oct 5 2025',
+      time: 'Oct 15 2025',
       readTime: '30 s'
-    })
+    }),
   },
+  'xiao-shen-ke': new Template({
+    path: 'movie/xiao-shen-ke',
+    name: '肖申克的救赎',
+    time: 'Oct 23 2025',
+    readTime: '30 s'
+  }),
   'test': new Template({
     path: 'test/test',
     name: 'ts',
@@ -178,6 +184,7 @@ const data = {
   ],
   "观影": [
     movie['dong-ji-dao'],
+    movie['xiao-shen-ke'],
   ],
 }
 

@@ -11,7 +11,7 @@ import Tone from "@/model/PROJECT/iconComponent/Tone.vue";
 const Projects = reactive({
   pro: [
     {
-      capName: 'Chrome 扩展插件:',
+      capName: 'Chrome 插件',
       capList: [
         {
           icon: AdsIcon,
@@ -28,7 +28,7 @@ const Projects = reactive({
       ]
     },
     {
-      capName: 'Nodejs:',
+      capName: 'Node',
       capList: [
         {
           icon: Spider,
@@ -45,7 +45,7 @@ const Projects = reactive({
       ]
     },
     {
-      capName: 'Page:',
+      capName: 'Page',
       capList: [
         {
           icon: Player,
@@ -53,12 +53,13 @@ const Projects = reactive({
           desc: '纯 ECMAScript 实现的音乐播放器',
           // url: 'https://github.com/NemophilistWatermelon/music_player'
           url: 'https://music-player-steel-ten.vercel.app/'
-        }
-      ]
-    },
-    {
-      capName: 'Cool CSS:',
-      capList: [
+        },
+        {
+          icon: Terminal,
+          name: 'Terminal',
+          desc: '一个非常 COOL の 终端',
+          url: '/#/terminal'
+        },
         {
           icon: PainStr,
           name: 'PainStr',
@@ -69,7 +70,7 @@ const Projects = reactive({
       ]
     },
     {
-      capName: '雜項:',
+      capName: '雜項',
       capList: [
         {
           icon: Blog,
@@ -77,16 +78,11 @@ const Projects = reactive({
           desc: '基于 Vue-Press 抒写的个人博文(坚持更新)',
           url: 'https://self-blog-five.vercel.app/'
         },
-        {
-          icon: Terminal,
-          name: 'Terminal',
-          desc: '一个非常 COOL の 终端',
-          url: '/#/terminal'
-        }
+
       ]
     },
     {
-      capName: '课程:',
+      capName: '课程',
       capList: [
         {
           icon: mapbox,

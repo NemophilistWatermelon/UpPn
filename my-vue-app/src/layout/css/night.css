@@ -11,7 +11,7 @@
   --md-h1-color: #fff;
 
   --intro-h1: #fff;
- 
+
 
   --scorll-bar-color: #131212;
   --intro-h1-size: 2.5rem;
@@ -20,4 +20,6 @@
   --hover-text-color: var(--half-gray-128);
   --item-name-color: #afafaf;
   --logo-filter-color: invert(1);
+
+  --stroke-text-color: rgba(255, 255, 255, 0.1);
 }
