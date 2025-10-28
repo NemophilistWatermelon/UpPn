@@ -16,7 +16,7 @@ Browser Plugin:
 
 
 How Find Me:
-  - ```up-a https://github.com/NemophilistWatermelon?tab=repositories) | Git ```
+  - ```up-a https://github.com/hsknemo?tab=repositories) | Git ```
 
 Skill of use:
     ```up-keyword Node.js ```

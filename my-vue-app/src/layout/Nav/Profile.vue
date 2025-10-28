@@ -13,7 +13,7 @@ import Pin from './IconComponent/Pin.vue'
   <router-link to="/Gernerator">
     <Gernerator class="icon" />
   </router-link>
-  <a  href="https://github.com/NemophilistWatermelon" target="_brand">
+  <a  href="https://github.com/hsknemo" target="_brand">
     <Git class="icon" />
   </a>
   <NightToLight />
