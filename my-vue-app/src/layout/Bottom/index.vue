@@ -1,17 +1,29 @@
 <script setup>
-import { useRouter } from 'vue-router'
+import {useRouter, useRoute} from 'vue-router'
 
-  const router = useRouter()
+const reactive_store = reactive({
+  isFull: false,
+})
+const router = useRouter()
+const route = useRoute()
 
-  const onExit = function() {
-    router.go(-1)
-  }
+if (route.query.maxFull) {
+  reactive_store.isFull = true
+}
+
+const onExit = function () {
+  router.go(-1)
+}
 </script>
 
 <template>
   <div
-   class="cd-container max-full max-full-5"
-    v-if="!(['/', '/index'].includes(router.currentRoute.value.fullPath))">
+      class="cd-container"
+      :class="[
+           {'max-full': reactive_store.isFull},
+           {'max-full-5': !reactive_store.isFull}
+       ]"
+      v-if="!(['/', '/index'].includes(router.currentRoute.value.fullPath))">
     <span @click="onExit">
       cd ../
     </span>
@@ -22,6 +34,8 @@ import { useRouter } from 'vue-router'
 <style lang="scss" scoped>
 .cd-container {
   margin-top: 14px;
+  margin-bottom: 10px;
+
   span {
     display: inline-block;
     cursor: pointer;
@@ -37,7 +51,6 @@ import { useRouter } from 'vue-router'
       border-bottom: 2px solid;
     }
   }
-
 
 
 }

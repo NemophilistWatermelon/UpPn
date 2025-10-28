@@ -11,6 +11,7 @@ const Template = function (o) {
   this.text = o.text
   this.time = o.time
   this.readTime = o.readTime
+  this.isCodeArea = o.hasCode
   return this
 }
 
@@ -26,7 +27,7 @@ const skill = {
   },
   前端开发套路: {
     ...new Template({
-      path: 'qian-duan-kai-fa',
+      path: 'playground/fe-end/qian-duan-kai-fa',
       name: '前端开发套路',
       text: '前端开发套路',
       time: 'May 03',
@@ -35,7 +36,7 @@ const skill = {
   },
   Vue2vs3: {
     ...new Template({
-      path: 'vue2-vs-vue3',
+      path: 'playground/fe-end/vue2-vs-vue3',
       name: 'vue2 与 vue3 上手感觉',
       text: 'vue2 vue3 上手感觉',
       time: 'May 03',
@@ -44,7 +45,7 @@ const skill = {
   },
   土发造炮: {
     ...new Template({
-      path: 'JS-Async',
+      path: 'playground/fe-end/JS-Async',
       name: '土发造炮-异步',
       text: '土发造炮-异步',
       time: 'May 09',
@@ -56,7 +57,7 @@ const skill = {
 const life = {
   上海疫情: {
     ...new Template({
-      path: 'shang-hai-yi-qing',
+      path: 'life/shang-hai-yi-qing',
       name: '上海疫情😢!',
       text: '上海疫情😢',
       time: '22 Apr 31',
@@ -65,7 +66,7 @@ const life = {
   },
   前端之路: {
     ...new Template({
-      path: 'qian-duan-zhi-lu',
+      path: 'life/qian-duan-zhi-lu',
       name: '如何踏上这条前端路!',
       text: '如何踏上这条前端路',
       time: '22 May 03',
@@ -74,7 +75,7 @@ const life = {
   },
   周日日记: {
     ...new Template({
-      path: 'zhou-ri-ri-ji',
+      path: 'life/zhou-ri-ri-ji',
       name: '周日日记 🤷🏻‍♀️',
       text: '周日日记',
       time: '22 May 08',
@@ -83,7 +84,7 @@ const life = {
   },
   新的希望: {
     ...new Template({
-      path: 'hope',
+      path: 'life/hope',
       name: '新的希望 🎁',
       text: '新的希望🎁',
       time: '22 May 19',
@@ -92,20 +93,29 @@ const life = {
   },
   送给老弟: {
     ...new Template({
-      path: 'ao-li-gei',
+      path: 'life/ao-li-gei',
       name: '与弟书 📢',
       text: '与弟书 📢',
       time: 'May 19',
       readTime: '未知'
     })
   },
+  浪潮: {
+    ...new Template({
+      path: 'life/how-to-do',
+      name: '浪潮 📒',
+      text: '浪潮',
+      time: 'oct 28 2025',
+      readTime: '10 min'
+    })
+  }
 
 }
 
 const draw = {
   'draw-she-qu-xian': {
     ...new Template({
-      path: 'draw-she-qu-xian',
+      path: 'test/draw-she-qu-xian',
       name: '弯曲的蛇形曲线',
       time: 'Dec 5 2022',
       readTime: '5 min'
@@ -116,7 +126,7 @@ const draw = {
 const movie = {
   'dong-ji-dao': {
     ...new Template({
-      path: 'dong-ji-dao',
+      path: 'movie/dong-ji-dao',
       name: '东极岛',
       time: 'Oct 15 2025',
       readTime: '30 s'
@@ -139,18 +149,20 @@ const movie = {
 const classes = {
   'mapbox-one': {
     ...new Template({
-      path: 'map-box-lesson-one',
+      path: 'classes/mapbox/map-box-lesson-one',
       name: '第一章：利用mapbox初始化地图',
       time: '25 Oct 15',
-      readTime: '5 min'
+      readTime: '5 min',
+      hasCode: true,
     })
   },
   'mapbox-sec': {
     ...new Template({
-      path: 'create-point',
+      path: 'classes/mapbox/create-point',
       name: '第二章：创建点位数据',
       time: '25 Oct 19',
-      readTime: '5 min'
+      readTime: '5 min',
+      hasCode: true,
     })
   }
 }
@@ -173,7 +185,9 @@ const data = {
     // life.送给老弟,
   ],
   // 心灵鸡汤
-  心灵鸡汤: {},
+  心灵鸡汤: [
+    life.浪潮,
+  ],
   '课程笔记': [
     classes["mapbox-one"],
     classes["mapbox-sec"],

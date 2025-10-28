@@ -3,6 +3,7 @@
   import Title from '@/layout/Title/index.vue'
   import NullMessage from './Components/NullMessage.vue'
   import ModelBolg from '@/model/BLOG/index.js'
+  import { useRouter, useRoute } from 'vue-router'
 
   export default defineComponent({
     name: 'BlogItem',
@@ -14,6 +15,8 @@
     },
 
     setup() {
+      const router = useRouter()
+
       /* 定义 Blog 数据 */
       const Blog = reactive({
         // 标题
@@ -34,9 +37,19 @@
       readBlogDataByKey(Blog.currentTag)
 
 
+      const onJumpMd = item => {
+        router.push({
+          path: '/posts/' + item.path,
+          query: {
+            maxFull: item.isCodeArea
+          }
+        })
+      }
+
       return {
         Blog,
-        readBlogDataByKey
+        readBlogDataByKey,
+        onJumpMd
       }
     }
   })
@@ -58,7 +71,8 @@
 
     <template v-if="Blog.currentBlog.length">
       <div class="post-item" v-for="item in Blog.currentBlog">
-        <RouterLink :to="'/posts/' + item.path ">{{ item.name}}</RouterLink>
+        <span class="anchor" @click="onJumpMd(item)">{{ item.name}}</span>
+<!--        <RouterLink :to="'/posts/' + item.path + `?max-full=${item.isCodeArea}`">{{ item.name}}</RouterLink>-->
         <div class="other">
           <span>{{ item.time }} · <span class="readTime">{{ item.readTime }}</span></span>
         </div>
@@ -92,6 +106,12 @@
   padding: 10px;
   margin-bottom: 15px;
   font-family: var(--common-font-family);
+
+  .anchor {
+    font-size: 16px;
+    cursor: pointer;
+  }
+
   .readTime {
     color: #7a7a7a;
   }

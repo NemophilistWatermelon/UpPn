@@ -22,8 +22,14 @@ app.use(ElementPlus)
 app.mount('#app')
 //创建v-highlight全局指令
 app.directive('highlight',function (el) {
+  ExpMarkdownCustome.upInitClassName(el)
   ExpMarkdownCustome.upBold(el)
   ExpMarkdownCustome.upItems(el)
+  ExpMarkdownCustome.upKeyWord(el)
+  ExpMarkdownCustome.upAnchorKeyWord(el)
+  ExpMarkdownCustome.upBreak(el)
+  ExpMarkdownCustome.upAnimateText(el)
+
   let blocks = el.querySelectorAll('pre code');
 
   blocks.forEach((block, index) =>{

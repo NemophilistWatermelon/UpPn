@@ -6,7 +6,20 @@
     callback(await import('./mine.md'))
   }
 
-  readmd(target => {
+  const delay = async ms => new Promise(resolve => {
+    setTimeout(resolve, ms)
+  })
+
+  readmd(async target => {
+    if (localStorage.getItem('writed')) {
+      mineRef.value = target.html
+      return
+    }
+    localStorage.setItem('writed', true)
+    for (let i = 0; i < target.html.length; i++) {
+      await delay(1000 / 60)
+      mineRef.value += target.html[i]
+    }
     mineRef.value = target.html
   })
 
@@ -14,12 +27,20 @@
 </script>
 <template>
   <div class="max-full intro-container" >
-    <div v-html="mineRef"></div>
+    <div v-html="mineRef" v-highlight></div>
   </div>
 </template>
 
 
 <style lang="scss" scoped>
+
+@mixin hover-highlight-text($startColor:#e7ff00, $endColor:#f46527) {
+  &:hover {
+    background-image: linear-gradient(to right,  $startColor, $endColor);
+    background-clip: text;
+    color: transparent;
+  }
+}
 .intro-container {
   width: 50%;
   padding: 1.2em;
@@ -35,8 +56,16 @@
       color: var(--md-h1-color);
     }
 
+    .keyword, .keyword a {
+      transition: all .3s;
+    }
     .keyword {
       color: var(--md-h1-color);
+      @include hover-highlight-text();
+      a {
+        @include hover-highlight-text();
+      }
+
     }
 
     ul {

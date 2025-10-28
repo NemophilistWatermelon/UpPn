@@ -1,5 +1,6 @@
 <script >
 import {ElMessage} from "element-plus";
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
   name: 'template',
@@ -7,6 +8,13 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const str = ref()
+    const reactive_store = reactive({
+      isFull: false,
+    })
+
+    if (route.query.maxFull) {
+      reactive_store.isFull = true
+    }
 
     const delay = async ms => {
       return new Promise(resolve => {
@@ -49,7 +57,6 @@ export default defineComponent({
 
     unMdByRoute(async target => {
       // var html = markdown(target.html)
-      console.log(target.html)
       str.value = pluginExp(target.html, 'bbb加粗文本', 'bbb')
       await delay(1000)
       addCopy()
@@ -76,15 +83,22 @@ export default defineComponent({
     }
 
     return {
-      str
+      str,
+      reactive_store
     }
   },
 })
 </script>
 
 <template>
-  <div class="template-container max-full" v-html="str" v-highlight>
-
+  <div class="template-container"
+       :class="[
+           {'max-full': reactive_store.isFull},
+           {'max-full-5': !reactive_store.isFull}
+       ]"
+       v-html="str"
+       v-highlight
+  >
   </div>
 </template>
 

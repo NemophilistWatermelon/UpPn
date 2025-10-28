@@ -42,13 +42,17 @@ html:root {
   font-size: var(--nav-icon-size)
 }
 
+@mixin margin-center {
+  margin: 0 auto;
+}
 .max-full {
   width: var(--m-full);
-  margin: 0 auto;
+  @include margin-center();
 }
 
 .max-full-5 {
   width: 50%;
+  @include margin-center();
 }
 
 .default-text {
@@ -85,8 +89,42 @@ a {
   }
 
 }
+@mixin hover-highlight-text($startColor:#e7ff00, $endColor:#f46527) {
+  &:hover {
+    background-image: linear-gradient(to right,  $startColor, $endColor);
+    background-clip: text;
+    color: transparent;
+  }
+}
+@mixin mine-markdown-up-ani-text($startColor:#e7ff00, $endColor:#f46527) {
+  @keyframes text-ani {
+    0% {
+      background-position: 100% 0;
+    }
 
+    100% {
+      background-position: -100% 0;
+    }
+
+  }
+  width: fit-content;
+  color: transparent;
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, transparent, $startColor, transparent , $endColor, transparent);
+  background-clip: text;
+  animation: text-ani 1s linear infinite;
+}
 @mixin mine-markdown {
+  .keyword, .keyword a {
+    transition: all .3s;
+  }
+  .keyword {
+    color: var(--md-h1-color);
+    @include hover-highlight-text();
+    a {
+      @include hover-highlight-text();
+    }
+  }
   a {
     color: var(--half-gray-128);
   }
@@ -111,6 +149,10 @@ a {
       background-color: #353535;
       color: #fff;
     }
+  }
+
+  .up-ani-text {
+    @include mine-markdown-up-ani-text()
   }
 }
 
