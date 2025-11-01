@@ -105,7 +105,16 @@ const life = {
       path: 'life/how-to-do',
       name: '浪潮 📒',
       text: '浪潮',
-      time: 'oct 28 2025',
+      time: '25 oct 28',
+      readTime: '10 min'
+    })
+  },
+  tran: {
+    ...new Template({
+      path: 'life/tran',
+      name: 'Tran 🔗',
+      text: 'Tran',
+      time: '25 Nov 11',
       readTime: '10 min'
     })
   }
@@ -182,6 +191,7 @@ const data = {
     life.上海疫情,
     life.周日日记,
     life.新的希望,
+    life.tran,
     // life.送给老弟,
   ],
   // 心灵鸡汤

@@ -8,6 +8,11 @@ let jsonModel = {
 }
 
 
+/**
+ * 生成电影卡片
+ * @param selector
+ * @constructor
+ */
 export default function Exp(selector) {
   let modelSelectors = selector.querySelectorAll(jsonModel.name)
   if (modelSelectors.length) {

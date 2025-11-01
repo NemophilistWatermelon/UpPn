@@ -13,6 +13,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/cybertopia-saturated.css' //样式
 import '@/assets/movie/card.scss'
 import ExpMarkdownCustome from '@/plugins/index'
+import upMovieItem from "@/plugins/up-MovieItem";
 /* 挂接 */
 const app = createApp(App)
 
@@ -24,7 +25,7 @@ app.mount('#app')
 app.directive('highlight',function (el) {
   ExpMarkdownCustome.upInitClassName(el)
   ExpMarkdownCustome.upBold(el)
-  ExpMarkdownCustome.upItems(el)
+  ExpMarkdownCustome.upMovieItem(el)
   ExpMarkdownCustome.upKeyWord(el)
   ExpMarkdownCustome.upAnchorKeyWord(el)
   ExpMarkdownCustome.upBreak(el)
